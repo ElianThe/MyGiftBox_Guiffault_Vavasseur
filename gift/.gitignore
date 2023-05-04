@@ -1,5 +1,5 @@
 gift/gift.appli/vendor
 gift/.idea
-gift/gift.appli/conf
+gift/gift.appli/src/conf
 *.lock
 
