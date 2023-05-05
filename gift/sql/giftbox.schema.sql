@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.5.5-10.3.11-MariaDB-1:10.3.11+maria~bionic dump
+    -- Adminer 4.8.1 MySQL 5.5.5-10.3.11-MariaDB-1:10.3.11+maria~bionic dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
