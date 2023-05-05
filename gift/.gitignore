@@ -1,5 +1,6 @@
 gift/gift.appli/vendor
 gift/.idea
-gift/gift.appli/src/conf
+conf/gift.db.conf.ini.dist
 *.lock
+*.xml
 
