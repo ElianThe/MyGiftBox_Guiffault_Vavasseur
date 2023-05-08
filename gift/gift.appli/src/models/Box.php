@@ -11,6 +11,6 @@ class Box extends Model
     public $timestamps = true;
 
     public function prestations () {
-        return $this->belongsToMany('gift\app\models\Prestation', 'box2presta', 'box_id', 'presta_id')->withPivot(['quatite']);
+        return $this->belongsToMany('gift\app\models\Prestation', 'box2presta', 'box_id', 'presta_id')->withPivot(['quantite']);
     }
 }

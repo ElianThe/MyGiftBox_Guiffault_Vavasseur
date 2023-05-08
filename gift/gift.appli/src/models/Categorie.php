@@ -10,4 +10,8 @@ class Categorie extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
 
+    public function prestations () {
+        return $this->hasMany(Prestation::class, 'cat_id', 'id');
+    }
+
 }
