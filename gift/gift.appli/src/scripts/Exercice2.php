@@ -1,6 +1,8 @@
 <?php
 
 require_once '../vendor/autoload.php';
+
+use Cassandra\Uuid;
 use Illuminate\Database\Capsule\Manager as DB;
 
 $PHP_EOL = "<br>";
