@@ -3,4 +3,6 @@ gift/.idea
 conf/gift.db.conf.ini.dist
 *.lock
 *.xml
+*.ini
+*.dist
 
