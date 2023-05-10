@@ -13,7 +13,7 @@ $app->addRoutingMiddleware();
 $app->setBasePath('/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public');
 
 // Initialisation de Eloquent
-Eloquent::init(__DIR__ . '\gift.db.conf.ini.dist');
+Eloquent::init(__DIR__ . DIRECTORY_SEPARATOR .'gift.db.conf.ini.dist');
 
 // Retourner l'application configurée
 return $app;
