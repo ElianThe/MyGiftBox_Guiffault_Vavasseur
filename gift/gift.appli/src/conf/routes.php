@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 use gift\app\models\Categorie;
 use gift\app\models\Prestation;
@@ -56,7 +57,7 @@ HTML;
             });
 
 // Route 2 : Affichage d'une catégorie
-    $app->get('/categorie/{id}', function (Request $request, Response $response, array $args) {
+    $app->get('/categorie/{id}', function (Request $request, Response $response, array $args) : Response{
         $categorie = Categorie::find($args['id']);
         $html = <<<HTML
     
@@ -80,7 +81,7 @@ HTML;
     });
 
 // Route 3 : Affichage d'une prestation si l'ID est présent en paramètre
-    $app->get('/prestation', function (Request $request, Response $response, array $args) {
+    $app->get('/prestation', function (Request $request, Response $response, array $args): Response {
         $id = $request->getQueryParams()['id'] ?? null;
         $html = null;
         if ($id === null) {
