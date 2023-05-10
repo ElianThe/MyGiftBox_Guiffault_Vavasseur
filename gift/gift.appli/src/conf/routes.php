@@ -15,11 +15,11 @@ return function (Slim\App $app) {
                 <html lang="en">
                 <head>
                     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-                    <title>Document</title>
+                    <title>Eliareg</title>
                 </head>
                 <body>
-                <p>Coucouc</p>
-                <p><a href="{$basePath}categories">Aller vers la liste des catégories</a></p>
+                <h1>Bienvenue sur notre page d'accueil Eliareg</h1>
+                <a href="{$basePath}categories">Aller vers la liste des catégories</a>
                 </body>
                 </html>
 EOM;
@@ -33,6 +33,7 @@ EOM;
 
         $app->get('/categories',
             function (Request $request, Response $response, array $args): Response {
+                $basePath = 'http://localhost/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
                 $categories = Categorie::all();
                 $html = <<<HTML
         <!DOCTYPE html>
@@ -42,12 +43,13 @@ EOM;
             <title>Liste des catégories</title>
         </head>
         <body>
+            <a href="{$basePath}">Retour à l'accueil</a>
             <h1>Liste des catégories</h1>
             <ul>
 HTML;
                 foreach ($categories as $categorie) {
                     $html .= <<<HTML
-                <li><a href='/categorie/{$categorie->id}'>{$categorie->id} - {$categorie->libelle}</a></li>
+                <li><a href='{$basePath}categorie/{$categorie->id}'>{$categorie->id} - {$categorie->libelle}</a></li>
             </ul>
         </body> 
         </html>
@@ -72,15 +74,12 @@ HTML;
             <title>Catégorie {$categorie->id}</title>
         </head>
         <body>
-            <h1>Catégorie {$categorie->id}</h1>
-            <ul>
-                <li>{$categorie->id} - {$categorie->libelle}</li>
-            </ul>
+            <h1>Catégorie :  {$categorie->libelle}</h1>
+            <h3>Description de la catégorie</h3>
+            <p>{$categorie->description}</p>
             
             <a href="{$basePath}categories">Retour à la liste des catégories</a>
 HTML;
-
-        // ajout du lien vers les prestations de la catégorie grace à un formulaire select
 
         $html.= <<<HTML
                     <select name="prestation" id="prestation">               
@@ -91,8 +90,6 @@ HTML;
                             <option value="{$prestation->id}">{$prestation->libelle}</option>
                         HTML;
         }
-
-
 
         $response->getBody()->write($html);
         return $response;
