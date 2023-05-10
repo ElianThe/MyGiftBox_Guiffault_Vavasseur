@@ -5,7 +5,27 @@ use gift\app\models\Prestation;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
-$app = \Slim\Factory\AppFactory::create();
+return function (Slim\App $app) {
+    $app->get('/',
+        function (Request $rq, Response $rs, $args): Response {
+            $html = <<<EOM
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+                <html lang="en">
+                <head>
+                    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+                    <title>Document</title>
+                </head>
+                <body>
+                <p>Coucouc</p>
+                </body>
+                </html>
+EOM;
+
+            $rs->getBody()->write($html);
+            return $rs;
+        });
+};
+
 
 // Route 1 : liste des catégories
 $app->get('/categories', function (Request $request, Response $response, array $args) {
@@ -27,7 +47,7 @@ $app->get('/categories', function (Request $request, Response $response, array $
             </ul>
         </body> 
         </html>
-    HTML;
+HTML;
     }
 
     $response->getBody()->write($html);
@@ -38,6 +58,7 @@ $app->get('/categories', function (Request $request, Response $response, array $
 $app->get('/categorie/{id}', function (Request $request, Response $response, array $args) {
     $categorie = Categorie::find($args['id']);
     $html = <<<HTML
+    
         <!DOCTYPE html>
         <html lang="fr">
         <head>
@@ -51,7 +72,7 @@ $app->get('/categorie/{id}', function (Request $request, Response $response, arr
             </ul>
         </body>
         </html>
-    HTML;
+HTML;
 
     $response->getBody()->write($html);
     return $response;
@@ -83,10 +104,11 @@ $app->get('/prestation', function (Request $request, Response $response, array $
                 </ul>
             </body>
             </html>
-    HTML;
+HTML;
     }
     $response->getBody()->write($html);
     return $response;
+});
 
 
 
