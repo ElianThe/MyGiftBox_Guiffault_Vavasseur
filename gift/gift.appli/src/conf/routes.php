@@ -24,13 +24,14 @@ EOM;
             $rs->getBody()->write($html);
             return $rs;
         });
-};
 
 
 // Route 1 : liste des catégories
-$app->get('/categories', function (Request $request, Response $response, array $args) {
-    $categories = Categorie::all();
-    $html = <<<HTML
+
+        $app->get('/categories',
+            function (Request $request, Response $response, array $args): Response {
+                $categories = Categorie::all();
+                $html = <<<HTML
         <!DOCTYPE html>
         <html lang="fr">
         <head>
@@ -40,24 +41,24 @@ $app->get('/categories', function (Request $request, Response $response, array $
         <body>
             <h1>Liste des catégories</h1>
             <ul>
-    HTML;
-    foreach ($categories as $categorie) {
-        $html .= <<<HTML
+HTML;
+                foreach ($categories as $categorie) {
+                    $html .= <<<HTML
                 <li><a href='/categorie/{$categorie->id}'>{$categorie->id} - {$categorie->libelle}</a></li>
             </ul>
         </body> 
         </html>
 HTML;
-    }
+                }
 
-    $response->getBody()->write($html);
-    return $response;
-});
+                $response->getBody()->write($html);
+                return $response;
+            });
 
 // Route 2 : Affichage d'une catégorie
-$app->get('/categorie/{id}', function (Request $request, Response $response, array $args) {
-    $categorie = Categorie::find($args['id']);
-    $html = <<<HTML
+    $app->get('/categorie/{id}', function (Request $request, Response $response, array $args) {
+        $categorie = Categorie::find($args['id']);
+        $html = <<<HTML
     
         <!DOCTYPE html>
         <html lang="fr">
@@ -74,19 +75,19 @@ $app->get('/categorie/{id}', function (Request $request, Response $response, arr
         </html>
 HTML;
 
-    $response->getBody()->write($html);
-    return $response;
-});
+        $response->getBody()->write($html);
+        return $response;
+    });
 
 // Route 3 : Affichage d'une prestation si l'ID est présent en paramètre
-$app->get('/prestation', function (Request $request, Response $response, array $args) {
-    $id = $request->getQueryParams()['id'] ?? null;
-    $html = null;
-    if ($id === null) {
-        $response->withStatus(400, "Paramètre absent");
-    } else {
-        $prestation = Prestation::find($id);
-        $html = <<<HTML
+    $app->get('/prestation', function (Request $request, Response $response, array $args) {
+        $id = $request->getQueryParams()['id'] ?? null;
+        $html = null;
+        if ($id === null) {
+            $response->withStatus(400, "Paramètre absent");
+        } else {
+            $prestation = Prestation::find($id);
+            $html = <<<HTML
             <!DOCTYPE html>
             <html lang="fr">
             <head>
@@ -105,15 +106,8 @@ $app->get('/prestation', function (Request $request, Response $response, array $
             </body>
             </html>
 HTML;
-    }
-    $response->getBody()->write($html);
-    return $response;
-});
-
-
-
-
-
-
-
-
+        }
+        $response->getBody()->write($html);
+        return $response;
+    });
+};
