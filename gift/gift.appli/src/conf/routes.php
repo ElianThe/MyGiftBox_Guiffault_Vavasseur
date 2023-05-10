@@ -57,7 +57,7 @@ HTML;
             });
 
 // Route 2 : Affichage d'une catégorie
-    $app->get('/categorie/{id}', function (Request $request, Response $response, array $args) : Response{
+    $app->get('/categories/{id:\d+}[/]', function (Request $request, Response $response, array $args) : Response{
         $categorie = Categorie::find($args['id']);
         $html = <<<HTML
     
