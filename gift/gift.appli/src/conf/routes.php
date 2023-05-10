@@ -7,8 +7,11 @@ use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
 return function (Slim\App $app) {
+
+
     $app->get('/',
         function (Request $rq, Response $rs, $args): Response {
+            $basePath = 'http://localhost/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
             $html = <<<EOM
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
                 <html lang="en">
@@ -18,6 +21,7 @@ return function (Slim\App $app) {
                 </head>
                 <body>
                 <p>Coucouc</p>
+                <p><a href="{$basePath}categories">Aller vers la liste des catégories</a></p>
                 </body>
                 </html>
 EOM;
@@ -31,6 +35,7 @@ EOM;
 
         $app->get('/categories',
             function (Request $request, Response $response, array $args): Response {
+                $basePath = 'http://localhost/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
                 $categories = Categorie::all();
                 $html = <<<HTML
         <!DOCTYPE html>
@@ -40,24 +45,25 @@ EOM;
             <title>Liste des catégories</title>
         </head>
         <body>
+            <a href="{$basePath}">Retour à l'accueil</a>
             <h1>Liste des catégories</h1>
             <ul>
 HTML;
                 foreach ($categories as $categorie) {
                     $html .= <<<HTML
-                <li><a href='/categorie/{$categorie->id}'>{$categorie->id} - {$categorie->libelle}</a></li>
-            </ul>
-        </body> 
-        </html>
-HTML;
+                             <li><a href='{$basePath}categorie/{$categorie->id}'> {$categorie->id} - {$categorie->libelle}</a></li>
+                         </ul>
+                     HTML;
                 }
+
 
                 $response->getBody()->write($html);
                 return $response;
             });
 
 // Route 2 : Affichage d'une catégorie
-    $app->get('/categories/{id:\d+}[/]', function (Request $request, Response $response, array $args) : Response{
+    $app->get('/categorie/{id:\d+}[/]', function (Request $request, Response $response, array $args) : Response{
+        $basePath = 'http://localhost/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
         $categorie = Categorie::find($args['id']);
         $html = <<<HTML
     
@@ -72,9 +78,23 @@ HTML;
             <ul>
                 <li>{$categorie->id} - {$categorie->libelle}</li>
             </ul>
-        </body>
-        </html>
+            
+            <a href="{$basePath}categories">Retour à la liste des catégories</a>
 HTML;
+
+        // ajout du lien vers les prestations de la catégorie grace à un formulaire select
+
+        $html.= <<<HTML
+                    <select name="prestation" id="prestation">               
+                HTML;
+
+        foreach ($categorie->prestations as $prestation) {
+            $html .= <<<HTML
+                            <option value="{$prestation->id}">{$prestation->libelle}</option>
+                        HTML;
+        }
+
+
 
         $response->getBody()->write($html);
         return $response;
