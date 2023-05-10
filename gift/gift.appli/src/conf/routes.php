@@ -7,8 +7,6 @@ use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
 return function (Slim\App $app) {
-
-
     $app->get('/',
         function (Request $rq, Response $rs, $args): Response {
             $basePath = 'http://localhost/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
@@ -35,7 +33,6 @@ EOM;
 
         $app->get('/categories',
             function (Request $request, Response $response, array $args): Response {
-                $basePath = 'http://localhost/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
                 $categories = Categorie::all();
                 $html = <<<HTML
         <!DOCTYPE html>
@@ -45,15 +42,16 @@ EOM;
             <title>Liste des catégories</title>
         </head>
         <body>
-            <a href="{$basePath}">Retour à l'accueil</a>
             <h1>Liste des catégories</h1>
             <ul>
 HTML;
                 foreach ($categories as $categorie) {
                     $html .= <<<HTML
-                             <li><a href='{$basePath}categorie/{$categorie->id}'> {$categorie->id} - {$categorie->libelle}</a></li>
-                         </ul>
-                     HTML;
+                <li><a href='/categorie/{$categorie->id}'>{$categorie->id} - {$categorie->libelle}</a></li>
+            </ul>
+        </body> 
+        </html>
+HTML;
                 }
 
 
@@ -131,4 +129,45 @@ HTML;
         $response->getBody()->write($html);
         return $response;
     });
+
+    $app->get('/boxes/new',
+    function (Request $request, Response $response, array $args) : Response{
+        $html = <<<HTML
+            <!DOCTYPE html>
+            <html lang="fr">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Ajout boxes</title>
+                </head>
+                <body>
+                    <form>
+                        <label for="libelle">Libelle</label>
+                        <input type="text" id="libelle" name="libelle"><br>
+                        
+                        <label for="description">description</label>
+                        <input type="text" id="description" name="description"><br>
+                        
+                        <label for="montant">montant</label>
+                        <input type="text" id="montant" name="montant"><br>
+                        
+                        <label for="kdo">kdo</label>
+                        <input type="text" id="kdo" name="kdo"><br>     
+                        
+                        <label for="message_kdo">message du kdo</label>
+                        <input type="text" id="message_kdo" name="message_kdo"><br>
+                        
+                        <label for="status">Status</label>
+                        <input type="text" id="status" name="status"><br>
+                        
+                        <input type="submit" value="Envoyer">
+                    </form>
+                </body>
+            </html>
+HTML;
+        $response->getBody()->write($html);
+
+        return $response;
+    });
+
+
 };
