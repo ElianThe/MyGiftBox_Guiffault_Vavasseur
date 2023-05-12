@@ -3,13 +3,17 @@
 namespace gift\app\actions;
 
 use gift\app\models\Categorie;
+use gift\app\services\prestations\PrestationsService;
+use Slim\Psr7\Request;
+use Slim\Psr7\Response;
 
 class CategorieByIdAction
 {
 
-    public function __invoke(\Slim\Psr7\Request $rq, \Slim\Psr7\Response $response, array $args) {
+    public function __invoke(Request $request, Response $response, array $args) {
         $basePath = 'http://localhost/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
-        $categorie = Categorie::find($args['id']);
+        $prestationsService = new PrestationsService();
+        $categorie = $prestationsService->getCategorieById($args['id']);
         $html = <<<HTML
     
         <!DOCTYPE html>
