@@ -1,12 +1,11 @@
 <?php
 
 namespace gift\app\actions;
-
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
 class AccueilAction {
-    public function __invoke (Request $rq, Response $rs, $args) : \Slim\Psr7\Response {
+    public function __invoke (Request $request, Response $response, $args) : Response {
         $basePath = 'http://localhost/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
         $html = <<<EOM
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -21,7 +20,7 @@ class AccueilAction {
                 </body>
                 </html>
 EOM;
-        $rs->getBody()->write($html);
-        return $rs;
+        $response->getBody()->write($html);
+        return $response;
     }
 }
