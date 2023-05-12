@@ -27,7 +27,7 @@ class CategoriesAction
 HTML;
         foreach ($categories as $categorie) {
             $html .= <<<HTML
-                <li><a href='{$basePath}categorie/{$categorie->id}'>{$categorie->id} - {$categorie->libelle}</a></li>
+                <li><a href='{$basePath}categorie/{$categorie['id']}'>{$categorie['id']} - {$categorie['libelle']}</a></li>
             </ul>
         </body> 
         </html>
