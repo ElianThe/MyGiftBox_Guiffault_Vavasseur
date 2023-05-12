@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+use gift\app\actions\CategorieByIdAction;
+use gift\app\actions\PrestationAction;
 use gift\app\models\Categorie;
 use gift\app\models\Prestation;
 use Slim\Psr7\Request;
@@ -16,70 +18,12 @@ return function (Slim\App $app) {
 
 
     // Route 2 : Affichage d'une catégorie
-    $app->get('/categorie/{id:\d+}[/]', function (Request $request, Response $response, array $args) : Response{
-        $basePath = 'http://localhost/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
-        $categorie = Categorie::find($args['id']);
-        $html = <<<HTML
-    
-        <!DOCTYPE html>
-        <html lang="fr">
-        <head>
-            <meta charset="UTF-8">
-            <title>Catégorie {$categorie->id}</title>
-        </head>
-        <body>
-            <h1>Catégorie :  {$categorie->libelle}</h1>
-            <h3>Description de la catégorie</h3>
-            <p>{$categorie->description}</p>
-            
-            <a href="{$basePath}categories">Retour à la liste des catégories</a>
-HTML;
+    $app->get('/categorie/{id:\d+}[/]', CategorieByIdAction::class);
 
-        $html.= <<<HTML
-                    <select name="prestation" id="prestation">               
-                HTML;
 
-        foreach ($categorie->prestations as $prestation) {
-            $html .= <<<HTML
-                            <option value="{$prestation->id}">{$prestation->libelle}</option>
-                        HTML;
-        }
-
-        $response->getBody()->write($html);
-        return $response;
-    });
 
 // Route 3 : Affichage d'une prestation si l'ID est présent en paramètre
-    $app->get('/prestation', function (Request $request, Response $response, array $args): Response {
-        $id = $request->getQueryParams()['id'] ?? null;
-        $html = null;
-        if ($id === null) {
-            $response->withStatus(400, "Paramètre absent");
-        } else {
-            $prestation = Prestation::find($id);
-            $html = <<<HTML
-            <!DOCTYPE html>
-            <html lang="fr">
-            <head>
-                <meta charset="UTF-8">
-                <title>Prestation</title>
-            </head>
-            <body>
-                <h1>Prestation : {$prestation->libelle} </h1>
-                <ul>
-                    <li>ID : {$prestation->id}</li>
-                    <li>Libellé : {$prestation->libelle}</li>
-                    <li>Description : {$prestation->description}</li>
-                    <li>Contenu : {$prestation->unite}</li>
-                    <li>Tarif : {$prestation->tarif}</li>
-                </ul>
-            </body>
-            </html>
-HTML;
-        }
-        $response->getBody()->write($html);
-        return $response;
-    });
+    $app->get('/prestation', PrestationAction::class);
 
     $app->get('/boxes/new',
     function (Request $request, Response $response, array $args) : Response{
