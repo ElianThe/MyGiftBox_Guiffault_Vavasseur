@@ -5,63 +5,17 @@ use gift\app\models\Categorie;
 use gift\app\models\Prestation;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
+use gift\app\actions\CategoriesAction;
+use gift\app\actions\AccueilAction;
 
 return function (Slim\App $app) {
-    $app->get('/',
-        function (Request $rq, Response $rs, $args): Response {
-            $basePath = 'http://localhost/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
-            $html = <<<EOM
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-                <html lang="en">
-                <head>
-                    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-                    <title>Eliareg</title>
-                </head>
-                <body>
-                <h1>Bienvenue sur notre page d'accueil Eliareg</h1>
-                <a href="{$basePath}categories">Aller vers la liste des catégories</a>
-                </body>
-                </html>
-EOM;
+    $app->get('/', AccueilAction::class);
 
-            $rs->getBody()->write($html);
-            return $rs;
-        });
+    // Route 1 : liste des catégories
+    $app->get('/categories', CategoriesAction::class);
 
 
-// Route 1 : liste des catégories
-
-        $app->get('/categories',
-            function (Request $request, Response $response, array $args): Response {
-                $basePath = 'http://localhost/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
-                $categories = Categorie::all();
-                $html = <<<HTML
-        <!DOCTYPE html>
-        <html lang="fr">
-        <head>
-            <meta charset="UTF-8">
-            <title>Liste des catégories</title>
-        </head>
-        <body>
-            <a href="{$basePath}">Retour à l'accueil</a>
-            <h1>Liste des catégories</h1>
-            <ul>
-HTML;
-                foreach ($categories as $categorie) {
-                    $html .= <<<HTML
-                <li><a href='{$basePath}categorie/{$categorie->id}'>{$categorie->id} - {$categorie->libelle}</a></li>
-            </ul>
-        </body> 
-        </html>
-HTML;
-                }
-
-
-                $response->getBody()->write($html);
-                return $response;
-            });
-
-// Route 2 : Affichage d'une catégorie
+    // Route 2 : Affichage d'une catégorie
     $app->get('/categorie/{id:\d+}[/]', function (Request $request, Response $response, array $args) : Response{
         $basePath = 'http://localhost/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
         $categorie = Categorie::find($args['id']);
