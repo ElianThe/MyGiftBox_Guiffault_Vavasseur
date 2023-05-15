@@ -21,7 +21,7 @@ class CategorieByIdAction
         try {
             $categorie = $prestationsService->getCategorieById($id);
         } catch (\Exception $exception) {
-            throw new ModelNotFoundException("Categorie non trouvée", 404);
+            throw new ModelNotFoundException("Catégorie non trouvée", 404);
         }
 
         $prestations = $prestationsService->getPrestationsbyCategorie($args['id']);
