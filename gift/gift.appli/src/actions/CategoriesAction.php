@@ -2,8 +2,10 @@
 
 namespace gift\app\actions;
 
+use gift\app\services\prestations\PrestationNotFoundException;
 use gift\app\services\prestations\PrestationsService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
@@ -15,8 +17,8 @@ class CategoriesAction
         $prestationService = new PrestationsService();
         try {
             $categories = $prestationService->getCategories();
-        } catch (\Exception $exception) {
-            throw new ModelNotFoundException('Catégorie non trouvée');
+        } catch (PrestationNotFoundException $exception) {
+            throw new HttpNotFoundException($request, 'Catégorie non trouvée');
         }
         $html = <<<HTML
         <!DOCTYPE html>

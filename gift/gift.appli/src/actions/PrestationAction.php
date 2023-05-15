@@ -2,8 +2,10 @@
 
 namespace gift\app\actions;
 
+use gift\app\services\prestations\PrestationNotFoundException;
 use gift\app\services\prestations\PrestationsService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
@@ -15,8 +17,8 @@ class PrestationAction
         $prestationsService = new PrestationsService();
         try {
             $prestation = $prestationsService->getPrestationById($id);
-        } catch (\Exception $exception) {
-            throw new ModelNotFoundException('Prestation non trouvée');
+        } catch (PrestationNotFoundException $exception) {
+            throw new HttpNotFoundException( $request, 'Prestation non trouvée');
         }
 
         $html = <<<HTML
