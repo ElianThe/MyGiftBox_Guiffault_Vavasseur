@@ -3,6 +3,7 @@
 namespace gift\app\actions;
 
 use gift\app\services\prestations\PrestationsService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
@@ -12,7 +13,11 @@ class PrestationAction
     public function __invoke(Request $request, Response $response, array $args) {
         $id = $request->getQueryParams()['id'] ?? null;
         $prestationsService = new PrestationsService();
-        $prestation = $prestationsService->getPrestationById($id);
+        try {
+            $prestation = $prestationsService->getPrestationById($id);
+        } catch (\Exception $exception) {
+            throw new ModelNotFoundException('Prestation non trouvée');
+        }
 
         $html = <<<HTML
         <!DOCTYPE html>

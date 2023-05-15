@@ -3,6 +3,7 @@
 namespace gift\app\actions;
 
 use gift\app\services\prestations\PrestationsService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
@@ -12,7 +13,11 @@ class CategoriesAction
     {
         $basePath = 'http://localhost/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
         $prestationService = new PrestationsService();
-        $categories = $prestationService->getCategories();
+        try {
+            $categories = $prestationService->getCategories();
+        } catch (\Exception $exception) {
+            throw new ModelNotFoundException('Catégorie non trouvée');
+        }
         $html = <<<HTML
         <!DOCTYPE html>
         <html lang="fr">

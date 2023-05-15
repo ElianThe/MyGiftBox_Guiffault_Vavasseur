@@ -16,15 +16,13 @@ class CategorieByIdAction
 
         $basePath = '/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
         $prestationsService = new PrestationsService();
-        
 
         try {
             $categorie = $prestationsService->getCategorieById($id);
+            $prestations = $prestationsService->getPrestationsbyCategorie($args['id']);
         } catch (\Exception $exception) {
-            throw new ModelNotFoundException("data not found");
+            throw new ModelNotFoundException("Catégorie non trouvée");
         }
-
-        $prestations = $prestationsService->getPrestationsbyCategorie($args['id']);
 
         $html = <<<HTML
     
