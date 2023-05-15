@@ -2,8 +2,8 @@
 
 namespace gift\app\actions;
 use gift\app\services\prestations\PrestationsService;
-use http\Client\Request;
-use http\Client\Response;
+use Slim\Psr7\Request;
+use Slim\Psr7\Response;
 
 class CategoriesAction
 {
