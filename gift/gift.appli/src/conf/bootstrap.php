@@ -16,7 +16,7 @@ $app->setBasePath('/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift
 $app->addErrorMiddleware(true, false, false);
 
 // Initialisation de Eloquent
-Eloquent::init(__DIR__ . DIRECTORY_SEPARATOR .'gift.db.conf.ini.dist');
+Eloquent::init(__DIR__ . DIRECTORY_SEPARATOR .'gift.db.conf.ini');
 
 // Retourner l'application configurée
 return $app;
