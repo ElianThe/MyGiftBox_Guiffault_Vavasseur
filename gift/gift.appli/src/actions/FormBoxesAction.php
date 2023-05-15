@@ -1,6 +1,7 @@
 <?php
 
 namespace gift\app\actions;
+
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 

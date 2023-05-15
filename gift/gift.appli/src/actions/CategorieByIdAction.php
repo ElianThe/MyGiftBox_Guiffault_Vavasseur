@@ -2,10 +2,8 @@
 
 namespace gift\app\actions;
 
-use gift\app\services\prestations\DataNotFoundException;
 use gift\app\services\prestations\PrestationsService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Slim\Exception\HttpBadRequestException;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 

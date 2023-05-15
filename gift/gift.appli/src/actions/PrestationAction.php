@@ -3,7 +3,6 @@
 namespace gift\app\actions;
 
 use gift\app\services\prestations\PrestationsService;
-use Slim\Exception\HttpBadRequestException;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
@@ -34,7 +33,6 @@ class PrestationAction
           </body>
           </html>
 HTML;
-
 
         $response->getBody()->write($html);
         return $response;
