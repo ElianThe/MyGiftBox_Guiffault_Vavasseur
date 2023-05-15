@@ -2,8 +2,10 @@
 
 namespace gift\app\actions;
 
-use gift\app\models\Categorie;
+use gift\app\services\prestations\DataNotFoundException;
 use gift\app\services\prestations\PrestationsService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Slim\Exception\HttpBadRequestException;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
@@ -11,21 +13,33 @@ class CategorieByIdAction
 {
 
     public function __invoke(Request $request, Response $response, array $args) {
-        $basePath = 'http://localhost/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
+        //gestion des erreurs
+        $id = null ?? $args['id'];
+
+        $basePath = '/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
         $prestationsService = new PrestationsService();
-        $categorie = $prestationsService->getCategorieById($args['id']);
+        
+
+        try {
+            $categorie = $prestationsService->getCategorieById($id);
+        } catch (\Exception $exception) {
+            throw new ModelNotFoundException("data not found");
+        }
+
+        $prestations = $prestationsService->getPrestationsbyCategorie($args['id']);
+
         $html = <<<HTML
     
         <!DOCTYPE html>
         <html lang="fr">
         <head>
             <meta charset="UTF-8">
-            <title>Catégorie {$categorie->id}</title>
+            <title>Catégorie {$categorie['id']}</title>
         </head>
         <body>
-            <h1>Catégorie :  {$categorie->libelle}</h1>
+            <h1>Catégorie :  {$categorie['libelle']}</h1>
             <h3>Description de la catégorie</h3>
-            <p>{$categorie->description}</p>
+            <p>{$categorie['description']}</p>
             
             <a href="{$basePath}categories">Retour à la liste des catégories</a>
 HTML;
@@ -34,9 +48,9 @@ HTML;
                     <select name="prestation" id="prestation">               
                 HTML;
 
-        foreach ($categorie->prestations as $prestation) {
+        foreach ($prestations as $prestation) {
             $html .= <<<HTML
-                            <option value="{$prestation->id}">{$prestation->libelle}</option>
+                            <option value="{$prestation['id']}">{$prestation['libelle']}</option>
                         HTML;
         }
 
