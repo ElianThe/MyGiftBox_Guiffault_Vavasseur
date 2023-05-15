@@ -5,7 +5,6 @@ namespace gift\app\services\prestations;
 use gift\app\models\Categorie;
 use gift\app\models\Prestation;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Slim\Exception\HttpBadRequestException;
 
 class PrestationsService
 {
@@ -13,10 +12,14 @@ class PrestationsService
         return Categorie::get()->toArray();
     }
     public function getCategorieById(int $id): array {
-        return Categorie::where('id', $id)->first()->toArray();
+        try {
+            $categorie = Categorie::where('id', $id)->firstOrFail()->toArray();
+        } catch (ModelNotFoundException $exception) {
+            throw new \Exception($exception->getMessage());
+        }
+        return $categorie;
     }
     public function getPrestationById(string $id): array {
-        $prestationsService = new PrestationsService();
         try {
             return Prestation::where('id', $id)->first()->toArray();
         } catch (\Exception $e) {
@@ -24,6 +27,11 @@ class PrestationsService
         }
     }
     public function getPrestationsbyCategorie(int $categ_id):array {
-        return Prestation::categorie()->where('id', $id)->get()->toArray();
+        try {
+            return Prestation::where('cat_id', $categ_id)->get()->toArray();
+        } catch (\Exception $e) {
+            throw new ModelNotFoundException('Prestation non trouvée', 404);
+        }
+
     }
 }
