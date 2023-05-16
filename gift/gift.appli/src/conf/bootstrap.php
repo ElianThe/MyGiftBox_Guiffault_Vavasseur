@@ -10,7 +10,7 @@ $app->setBasePath('/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift
 
 // Ajout du twig
 $twig = Twig::create( __DIR__ . '/../views/template',
-                                    ['cache' => __DIR__ . 'views/cache',
+                                    ['cache' => __DIR__ . '/../views/cache',
                                     'auto_reload' => true]);
 
 $app->add(TwigMiddleware::create($app, $twig)) ;
