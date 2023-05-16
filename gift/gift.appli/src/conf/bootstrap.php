@@ -5,6 +5,9 @@ $app = \Slim\Factory\AppFactory::create();
 $app->addRoutingMiddleware();
 $app->setBasePath('/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public');
 
+//Create Twig
+$twig = \Slim\Views\Twig::create('../view/template');
+
 //gestionnaire d'erreur
 $app->addErrorMiddleware(true, false, false);
 
