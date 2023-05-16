@@ -1,17 +1,19 @@
 <?php
 use gift\app\services\utils\Eloquent;
+use Slim\Factory\AppFactory;
+use Slim\Views\Twig;
+use Slim\Views\TwigMiddleware;
 
-$app = \Slim\Factory\AppFactory::create();
+$app = AppFactory::create();
 $app->addRoutingMiddleware();
 $app->setBasePath('/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public');
 
-//Create Twig
-$twig = \Slim\Views\Twig::create( __DIR__ . '/../views/template',
+// Ajout du twig
+$twig = Twig::create( __DIR__ . '/../views/template',
                                     ['cache' => __DIR__ . 'views/cache',
                                     'auto_reload' => true]);
 
-$app->add(
-\Slim\Views\TwigMiddleware::create($app, $twig)) ;
+$app->add(TwigMiddleware::create($app, $twig)) ;
 
 //gestionnaire d'erreur
 $app->addErrorMiddleware(true, false, false);
