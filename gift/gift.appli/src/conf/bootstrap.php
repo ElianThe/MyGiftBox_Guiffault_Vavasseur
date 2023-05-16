@@ -6,7 +6,12 @@ $app->addRoutingMiddleware();
 $app->setBasePath('/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public');
 
 //Create Twig
-$twig = \Slim\Views\Twig::create('../view/template');
+$twig = \Slim\Views\Twig::create( __DIR__ . '/../views/template',
+                                    ['cache' => __DIR__ . 'views/cache',
+                                    'auto_reload' => true]);
+
+$app->add(
+\Slim\Views\TwigMiddleware::create($app, $twig)) ;
 
 //gestionnaire d'erreur
 $app->addErrorMiddleware(true, false, false);
