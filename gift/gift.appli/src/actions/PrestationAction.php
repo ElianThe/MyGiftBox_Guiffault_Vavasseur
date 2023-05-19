@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
+use Slim\Views\Twig;
 
 class PrestationAction
 {
@@ -21,28 +22,14 @@ class PrestationAction
             throw new HttpNotFoundException( $request, 'Prestation non trouvée');
         }
 
-        $html = <<<HTML
-        <!DOCTYPE html>
-          <html lang="fr">
-          <head>
-              <meta charset="UTF-8">
-              <title>Prestation</title>
-          </head>
-          <body>
-              <h1>Prestation : {$prestation['libelle']} </h1>
-              <ul>
-                  <li>ID : {$prestation['id']}</li>
-                  <li>Libellé : {$prestation['libelle']}</li>
-                  <li>Description : {$prestation['description']}</li>
-                  <li>Contenu : {$prestation['unite']}</li>
-                  <li>Tarif : {$prestation['tarif']}</li>
-              </ul>
-          </body>
-          </html>
-HTML;
+        $html = 'bla';
+        $view = Twig::fromRequest($request);
 
-        $response->getBody()->write($html);
-        return $response;
+
+        //$response->getBody()->write($html);
+        return $view->render($response, 'prestation.twig', [
+            'prestation' => $prestation
+        ]);
     }
 
 
