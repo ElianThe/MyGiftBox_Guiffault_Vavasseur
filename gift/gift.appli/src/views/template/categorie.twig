@@ -10,7 +10,7 @@
 
 <a href="{{ basePath }}categories">Retour à la liste des catégories</a>
 
-<a href="#" >Voir les prestations liées à la catégorie</a>
+<a href="{{ url_for('prestationsFromCategorie', {'categ_id' : categorie.id}) }}" >Voir les prestations liées à la catégorie</a>
 
 </body>
 </html>
