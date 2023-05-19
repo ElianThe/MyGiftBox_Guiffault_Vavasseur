@@ -20,6 +20,8 @@ return function (Slim\App $app) {
     // Route 3 : Affichage d'une prestation si l'ID est présent en paramètre
     $app->get('/prestation', PrestationAction::class)->setName('prestation');
 
+    $app->get('/categorie/{categ_id:\d+}/prestations', \gift\app\actions\PrestationsFromCategorie::class)->setName('prestationsFromCategorie');
+
     //Route 4 : affiche un formulaire qui permet d'ajouter une boxe
     $app->get('/boxes/new', FormBoxesAction::class)->setName('newBox');
 
