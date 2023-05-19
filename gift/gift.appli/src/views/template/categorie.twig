@@ -8,11 +8,9 @@
 <h3>Description de la catégorie</h3>
 <p>{{ categorie.description }}</p>
 
-<a href="{{ basepath }}categories">Retour à la liste des catégories</a>
+<a href="{{ basePath }}categories">Retour à la liste des catégories</a>
 
+<a href="#" >Voir les prestations liées à la catégorie</a>
 
-<select name="prestation" id="prestation">
-    {% for prestation in prestations %}
-    <option value="{{ prestation.id }}">{{ prestation.libelle }}</option>
-    {% endfor %}
-</select>
+</body>
+</html>

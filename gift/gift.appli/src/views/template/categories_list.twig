@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des catégories</title>
+</head>
+<body>
+<a href="{{ basePath }}">Retour à l'accueil</a>
+<h1>Liste des catégories</h1>
+<ul>
+    {% for categorie in categories %}
+        <li><a href="{{ basePath }}categorie/{{ categorie.id }}">{{ categorie.id }} - {{ categorie.libelle }}</a></li>
+    {% endfor %}
+</ul>
+</body>
+</html>
