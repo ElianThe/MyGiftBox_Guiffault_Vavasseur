@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
+use Slim\Views\Twig;
 
 class CategoriesAction
 {
@@ -20,27 +21,11 @@ class CategoriesAction
         } catch (PrestationNotFoundException $exception) {
             throw new HttpNotFoundException($request, 'Catégorie non trouvée');
         }
-        $html = <<<HTML
-        <!DOCTYPE html>
-        <html lang="fr">
-        <head>
-            <meta charset="UTF-8">
-            <title>Liste des catégories</title>
-        </head>
-        <body>
-            <a href="{$basePath}">Retour à l'accueil</a>
-            <h1>Liste des catégories</h1>
-            <ul>
-HTML;
-        foreach ($categories as $categorie) {
-            $html .= <<<HTML
-                <li><a href='{$basePath}categorie/{$categorie['id']}'>{$categorie['id']} - {$categorie['libelle']}</a></li>
-            </ul>
-        </body> 
-        </html>
-HTML;
-        }
-        $response->getBody()->write($html);
-        return $response;
+
+        $view = Twig::fromRequest($request);
+        return $view->render($response, 'categories_list.twig', [
+            'categories' => $categories,
+            'basePath' => $basePath
+        ]);
     }
 };

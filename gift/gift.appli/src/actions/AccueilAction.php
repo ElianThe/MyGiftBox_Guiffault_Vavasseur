@@ -7,7 +7,8 @@ use Slim\Views\Twig;
 
 class AccueilAction {
     public function __invoke (Request $request, Response $response, $args) : Response {
-        $basePath = 'http://localhost/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
+        $basePath = '/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
+
 
         $view = Twig::fromRequest($request);
         return $view->render($response, 'home.twig', [
