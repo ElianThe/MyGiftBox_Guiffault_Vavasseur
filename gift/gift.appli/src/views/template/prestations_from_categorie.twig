@@ -7,7 +7,7 @@
 <body>
 <ul>
     {% for prestation in prestations %}
-        <li> <a href="{{ url_for('prestation', { 'id' : prestation.id }) }}">{{ prestation.libelle }}</a> </li>
+        <li> <a href="{{ url_for('prestation', {}, {'id' : prestation.id}) }}">{{ prestation.libelle }}</a> </li>
     {% endfor %}
 </ul>
 </body>

@@ -4,7 +4,6 @@ namespace gift\app\actions;
 
 use gift\app\services\prestations\PrestationNotFoundException;
 use gift\app\services\prestations\PrestationsService;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
@@ -22,14 +21,12 @@ class PrestationAction
             throw new HttpNotFoundException( $request, 'Prestation non trouvée');
         }
 
-        $html = 'bla';
         $view = Twig::fromRequest($request);
-
-
-        //$response->getBody()->write($html);
         return $view->render($response, 'prestation.twig', [
             'prestation' => $prestation
         ]);
+
+
     }
 
 

@@ -1,10 +1,13 @@
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>Eliareg</title>
-</head>
-<body>
-<h1>Bienvenue sur notre page d'accueil Eliareg</h1>
-<a href="{{ basepath }}categories">Aller vers la liste des catégories</a>
-</body>
-</html>
+{% extends "_layout/main.twig" %}
+
+
+{% block content %}
+
+    <body>
+    <h1>Bienvenue sur notre page d'accueil Eliareg</h1>
+    <p>Vous pouvez consulter la liste des catégories en cliquant sur le lien ci-dessous</p>
+    <a href="{{ url_for('categories') }}">Aller vers la liste des catégories</a>
+    </body>
+    </html>
+
+{% endblock %}

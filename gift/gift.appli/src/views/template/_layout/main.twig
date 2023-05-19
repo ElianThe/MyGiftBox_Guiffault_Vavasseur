@@ -1,0 +1,23 @@
+<DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../css/style.css" >
+</head>
+
+    <body>
+    {% include "_layout/header.twig" %}
+    {% include "_layout/nav.twig" %}
+
+    <section id="main">
+
+        {% block content %}
+        {% endblock %}
+
+    </section>
+
+    {% include "_layout/footer.twig" %}
+
+    </body>
+</html>
+</DOCTYPE>

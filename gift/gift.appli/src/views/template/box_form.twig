@@ -1,0 +1,29 @@
+{% extends "_layout/main.twig" %}
+
+{% block content %}
+
+    <h1>Création d'un cadeau</h1>
+
+    <form>
+        <label for="libelle">Libelle</label>
+        <input type="text" id="libelle" name="libelle"><br>
+
+        <label for="description">description</label>
+        <input type="text" id="description" name="description"><br>
+
+        <label for="montant">montant</label>
+        <input type="text" id="montant" name="montant"><br>
+
+        <label for="kdo">kdo</label>
+        <input type="text" id="kdo" name="kdo"><br>
+
+        <label for="message_kdo">message du kdo</label>
+        <input type="text" id="message_kdo" name="message_kdo"><br>
+
+        <label for="status">Status</label>
+        <input type="text" id="status" name="status"><br>
+
+        <input type="submit" value="Envoyer">
+    </form>
+
+{% endblock %}
