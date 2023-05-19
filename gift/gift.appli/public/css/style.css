@@ -1,0 +1,13 @@
+.header p{
+    text-align: center;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.footer #creators {
+    text-align: right;
+}
