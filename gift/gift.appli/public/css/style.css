@@ -1,13 +1,59 @@
-.header p{
-    text-align: center;
+body {
+    margin: 0;
+
 }
 
-.footer {
+.header {
     display: flex;
     justify-content: space-between;
+    background-color: #F5F5F5;
+}
+
+.eliareg {
+    margin-left: 2rem;
+    margin-right: -3rem;
+    text-transform: uppercase;
+}
+
+.eliareg a {
+    font-family: 'Comic Sans MS', sans-serif;
+    color: #98CFD5;
+    font-size: 2.5rem;
+    text-decoration: none;
+}
+
+.nav {
+    margin-top: 1.7rem;
 
 }
 
-.footer #creators {
-    text-align: right;
+.nav nav ul{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav nav ul li {
+    list-style: none;
+    margin: 0 2rem;
+}
+
+.nav a {
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: black;
+    padding: 0.5rem 1rem;
+
+}
+
+.nav a:hover {
+    transition: 0.5s;
+    background-color: #98CFD5;
+    border-radius: 20px;
+
+}
+
+.cart-login {
+    display: flex;
+    justify-content: space-around;
 }

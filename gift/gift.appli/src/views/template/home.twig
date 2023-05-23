@@ -3,11 +3,11 @@
 
 {% block content %}
 
-    <body>
-    <h1>Bienvenue sur notre page d'accueil Eliareg</h1>
-    <p>Vous pouvez consulter la liste des catégories en cliquant sur le lien ci-dessous</p>
-    <a href="{{ url_for('categories') }}">Aller vers la liste des catégories</a>
-    </body>
-    </html>
+    <h1 class="main-title">Bienvenue sur notre page d'accueil Eliareg</h1>
+    <div class="home-content">
+        <p class="home-description">Vous pouvez consulter la liste des catégories en cliquant sur le bouton
+            ci-dessous</p>
+        <a class="btn-primary" href="{{ url_for('categories') }}">Aller vers la liste des catégories</a>
+    </div>
 
 {% endblock %}

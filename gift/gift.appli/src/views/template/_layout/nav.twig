@@ -1,8 +1,24 @@
+<div class="header">
+    <div class="eliareg">
+        <h1><a href="{{ url_for('home') }}">Eliareg</a></h1>
+    </div>
 
-<nav>
-    <ul>
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('categories') }}">Catégories</a></li>
-        <li><a href="{{ url_for('newBox') }}">Créer une boxe</a></li>
-    </ul>
-</nav>
+    <div class="nav">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('categories') }}">Catégories</a></li>
+                <li><a href="{{ url_for('newBox') }}">Créer une boxe</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="cart-login">
+        <div class="cart">
+            Panier
+        </div>
+        <div class="login">
+            Connexion
+        </div>
+    </div>
+</div>
