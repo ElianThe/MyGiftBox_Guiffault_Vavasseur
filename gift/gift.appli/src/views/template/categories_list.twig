@@ -2,15 +2,18 @@
 
 {% block content %}
 
-    <body>
-    <h1>Liste des catégories</h1>
-    <ul>
-        {% for categorie in categories %}
-            <li><a href="{{ url_for('categorie', { 'id': categorie.id}) }}">{{ categorie.id }}
-                    - {{ categorie.libelle }}</a></li>
-        {% endfor %}
-    </ul>
-    </body>
-    </html>
+    <div class="categories-page">
+        <h1>Liste des catégories</h1>
+        <div class="categories">
+            {% for categorie in categories %}
+                <div class="categorie">
+                    <a href="{{ url_for('categorie', { 'id': categorie.id}) }}">
+                        <h2>{{ categorie.libelle }}</h2>
+                        <p>{{ categorie.description }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}

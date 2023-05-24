@@ -3,11 +3,18 @@
 
 {% block content %}
 
-    <h1 class="main-title">Bienvenue sur notre page d'accueil Eliareg</h1>
-    <div class="home-content">
-        <p class="home-description">Vous pouvez consulter la liste des catégories en cliquant sur le bouton
-            ci-dessous</p>
-        <a class="btn-primary" href="{{ url_for('categories') }}">Aller vers la liste des catégories</a>
+    <div class="content">
+        <div class="content-left">
+            <h1 class="main-title">Bienvenue sur notre site Eliareg</h1>
+            <div class="home-content">
+                <p class="home-description">Vous pouvez consulter la liste des catégories en cliquant sur le bouton
+                    ci-dessous</p>
+                <a class="btn-primary" href="{{ url_for('categories') }}">Liste des catégories</a>
+            </div>
+        </div>
+        <div class="content-right">
+            <img src="./img/eliareg.png" alt="">
+        </div>
     </div>
 
 {% endblock %}

@@ -1,6 +1,41 @@
 body {
+    font-family : 'Gill Sans MT', sans-serif;
     margin: 0;
 
+}
+
+#main {
+    margin-bottom: 7rem;
+}
+
+.btn-primary {
+    background-color: #98CFD5;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    text-decoration: none;
+}
+
+.btn-primary {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.btn-secondary {
+    background-color: #49FA8E;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    text-decoration: none;
 }
 
 .header {
@@ -23,7 +58,7 @@ body {
 }
 
 .nav {
-    margin-top: 1.7rem;
+    margin-top: 1.5rem;
 
 }
 
@@ -56,4 +91,168 @@ body {
 .cart-login {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    margin-right: 2rem;
+}
+
+.cart-login div {
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0 1rem;
+}
+
+.login {
+    background-color: #98CFD5;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    text-align: center;
+}
+
+.login:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.cart {
+    padding: 0.7rem;
+    border-radius: 20px;
+
+}
+
+.cart:hover {
+    background: #49FA8E;
+    transition: 0.8s;
+    cursor: pointer;
+
+}
+
+.cart img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin: 4rem 8rem;
+}
+
+.content-left {
+    flex: 35%;
+}
+
+.main-title {
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #98CFD5;
+    font-family: 'Stencil', sans-serif;
+}
+
+.home-content {
+    margin-top: 2rem;
+}
+
+.content-right {
+    flex: 65%;
+    text-align: center;
+
+}
+
+.content-right img {
+    width: 80%;
+    height: auto;
+}
+
+.home-description {
+    color: darkgrey;
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.footer {
+    background-color: #98CFD5;
+    display: flex;
+    padding: 2rem 8rem;
+}
+
+.elian {
+    flex: 40%;
+}
+
+.elian h2 {
+    text-align: center;
+    font-family: 'Comic Sans MS', sans-serif;
+
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.social a {
+    margin: 0 2rem;
+}
+
+.social a img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.seperator {
+    border-right: 4px solid black;
+    height: 5rem;
+    margin: 1.5rem 2rem 0 2rem;
+}
+
+.regis {
+    flex: 40%;
+}
+
+.regis h2 {
+    text-align: center;
+    font-family: 'Comic Sans MS', sans-serif;
+    text-transform: uppercase;
+
+}
+
+.linkedin {
+    margin-bottom: 1rem;
+
+}
+
+.categories-page h1 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #98CFD5;
+    font-family: 'Stencil', sans-serif;
+}
+
+.categories {
+    margin: 4rem 8rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.categorie {
+    flex: 50%;
+    text-align: center;
+    border-radius: 20px;
+    padding: 1rem;
+    background-color: #F5F5F5;
+    margin: 1rem;
+}
+
+.categorie a {
+    text-decoration: none;
+    color: black;
+}
+
+.categorie h2 {
+    text-transform: uppercase;
 }
