@@ -5,8 +5,6 @@ use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 
 $app = AppFactory::create();
-$app->addRoutingMiddleware();
-$app->setBasePath('/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public');
 
 // Ajout du twig
 $twig = Twig::create( __DIR__ . '/../views/template',

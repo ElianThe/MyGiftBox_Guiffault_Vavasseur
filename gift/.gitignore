@@ -5,4 +5,4 @@ conf/gift.db.conf.ini.dist
 *.xml
 *.ini
 *.dist
-
+.env
