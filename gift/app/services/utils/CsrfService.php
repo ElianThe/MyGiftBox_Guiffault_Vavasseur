@@ -13,6 +13,9 @@ class CsrfService
         return $token;
     }
 
+    /**
+     * @throws Exception
+     */
     public static function checkToken($token)
     {
         if (isset($_SESSION['csrf_token']) && $token === $_SESSION['csrf_token']) {
