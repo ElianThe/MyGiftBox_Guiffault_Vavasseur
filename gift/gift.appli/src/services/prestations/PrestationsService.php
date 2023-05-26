@@ -75,7 +75,7 @@ class PrestationsService
 
     public function addCategorie() : int {
         $categorie = new Categorie();
-        $categorie->libelle = 'Nouvelle catégorie';
+        $categorie->libelle = "test";
         $categorie->save();
         return $categorie->id;
     }

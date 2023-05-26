@@ -1,5 +1,7 @@
 <?php
 
+namespace gift\app\services\utils;
+
 class CsrfService
 {
 
