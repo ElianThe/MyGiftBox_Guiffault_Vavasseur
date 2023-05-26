@@ -1,16 +1,18 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Catégorie {{ categorie.id }}</title>
-</head>
-<body>
-<h1>Catégorie : {{ categorie.libelle }}</h1>
-<h3>Description de la catégorie</h3>
-<p>{{ categorie.description }}</p>
+{% extends "_layout/main.twig" %}
 
-<a href="{{ basePath }}categories">Retour à la liste des catégories</a>
 
-<a href="{{ url_for('prestationsFromCategorie', {'categ_id' : categorie.id}) }}" >Voir les prestations liées à la catégorie</a>
+{% block content %}
 
-</body>
-</html>
+    <div class="categorie-page">
+        <h1>Vous voilà sur la catégorie : {{ categorie.libelle }}</h1>
+
+        <p> Ici vous pourrez retrouver : {{ categorie.description }}</p>
+
+        <a href="{{ basePath }}categories" class="btn-primary">Retour à la liste des catégories</a>
+
+        <a href="{{ url_for('prestationsFromCategorie', {'categ_id' : categorie.id}) }}">Voir les prestations liées à la
+            catégorie</a>
+
+    </div>
+
+{% endblock %}

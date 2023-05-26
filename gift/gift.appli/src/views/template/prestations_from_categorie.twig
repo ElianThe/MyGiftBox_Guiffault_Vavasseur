@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Prestation</title>
-</head>
-<body>
+{% extends "_layout/main.twig" %}
+
+
+{% block content %}
+
 <ul>
     {% for prestation in prestations %}
         <li> <a href="{{ url_for('prestation', {}, {'id' : prestation.id}) }}">{{ prestation.libelle }}</a> </li>
     {% endfor %}
 </ul>
-</body>
-</html>
+
+{% endblock %}

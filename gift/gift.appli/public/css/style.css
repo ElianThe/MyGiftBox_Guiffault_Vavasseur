@@ -5,7 +5,7 @@ body {
 }
 
 #main {
-    margin-bottom: 7rem;
+    margin: 0 8rem 7rem 8rem;
 }
 
 .btn-primary {
@@ -231,21 +231,37 @@ body {
     text-transform: uppercase;
     color: #98CFD5;
     font-family: 'Stencil', sans-serif;
+    margin: 4rem 0;
+    position: relative;
+}
+
+.categories-page h1::after {
+    content: '';
+    position: absolute;
+    width: 12rem;
+    height: 3px;
+    background-color: black;
+    left: calc(50% - 6rem);
+    bottom: -2rem;
 }
 
 .categories {
-    margin: 4rem 8rem;
+    margin: 4rem 16rem;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .categorie {
-    flex: 50%;
+    width: 100%;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 25px;
     padding: 1rem;
     background-color: #F5F5F5;
-    margin: 1rem;
+    margin: 2rem;
+}
+
+.categories > div {
+    flex: 30%;
 }
 
 .categorie a {
