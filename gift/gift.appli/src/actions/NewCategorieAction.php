@@ -4,11 +4,13 @@ namespace gift\app\actions;
 
 use gift\app\services\prestations\PrestationsService;
 use gift\app\services\utils\CsrfService;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\Twig;
 
 class NewCategorieAction
 {
-    public function __invoke($request, $response, $args)
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $args)
     {
 
         //vérification présence token CSRF
