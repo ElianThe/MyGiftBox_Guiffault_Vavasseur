@@ -73,9 +73,10 @@ class PrestationsService
         }
     }
 
-    public function addCategorie() : int {
+    public function addCategorie($data) : int {
         $categorie = new Categorie();
-        $categorie->libelle = "test";
+        $categorie->libelle = $data['libelle'];
+        $categorie->description = $data['description'];
         $categorie->save();
         return $categorie->id;
     }

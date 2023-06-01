@@ -10,14 +10,21 @@ class NewCategorieAction
 {
     public function __invoke($request, $response, $args)
     {
+
+        $libelle = $request->getParsedBody()['categ_lib'];
+        $description = $request->getParsedBody()['categ_desc'];
+
+        $data = [
+            'libelle' => $libelle,
+            'description' => $description,
+        ];
+
         $prestationsService = new PrestationsService();
-        $csrfToken = CsrfService::generateToken();
-        $newCategorie = $prestationsService->addCategorie();
+        $newCategorie = $prestationsService->addCategorie($data);
 
         $view = Twig::fromRequest($request);
-        return $view->render($response, 'new_categorie.twig', [
+        return $view->render($response, 'categorie_created.twig', [
             'newCategorie' => $newCategorie,
-            'csrfToken' => $csrfToken,
         ]);
     }
 

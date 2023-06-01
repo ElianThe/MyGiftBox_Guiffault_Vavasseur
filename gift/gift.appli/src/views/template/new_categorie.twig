@@ -4,10 +4,12 @@
 
     <div class="new-categorie">
         <form method="post" action="{{ url_for('newCategorie') }}">
-            <label for="box_name_input">description</label>
-            <input type="text" id="box_name_input" name="box_name">
+            <label for="categ_lib_input">libelle</label>
+            <input type="text" id="categ_lib_input" name="categ_lib">
+            <label for="categ_desc_input">description</label>
+            <input type="text" id="categ_desc_input" name="categ_desc">
             <input type="hidden" name="csrfToken" value="{{ csrfToken }}">
-            <button type="submit">OK</button>
+            <button type="submit">Enregistrer</button>
         </form>
     </div>
 

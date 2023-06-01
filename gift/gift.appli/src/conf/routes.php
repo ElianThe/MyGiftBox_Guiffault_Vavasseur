@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 use gift\app\actions\CategorieByIdAction;
+use gift\app\actions\FormCategoriesAction;
 use gift\app\actions\NewCategorieAction;
 use gift\app\actions\PrestationAction;
 use gift\app\actions\CategoriesAction;
@@ -26,7 +27,10 @@ return function (Slim\App $app) {
     //Route 4 : affiche un formulaire qui permet d'ajouter une boxe
     $app->get('/boxes/new', FormBoxesAction::class)->setName('newBox');
 
-    //Route 5 : Créer une nouvelle catégorie
-    $app->get('/categorie/new', NewCategorieAction::class)->setName('newCategorie');
+    //Route 5 : Affichage d'un formulaire qui permet d'ajouter une catégorie
+    $app->get('/categories/new', FormCategoriesAction::class)->setName('newCategorieForm');
+
+    //Route 6 : Création d'une catégorie
+    $app->post('/categories/new', NewCategorieAction::class)->setName('newCategorie');
 
 };

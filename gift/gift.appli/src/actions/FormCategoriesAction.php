@@ -1,0 +1,20 @@
+<?php
+
+namespace gift\app\actions;
+
+use gift\app\services\utils\CsrfService;
+use Slim\Views\Twig;
+
+class FormCategoriesAction
+{
+    public function __invoke($request, $response, $args)
+    {
+        $csrfToken = CsrfService::generateToken();
+
+        $view = Twig::fromRequest($request);
+        return $view->render($response, 'new_categorie.twig', [
+            'csrfToken' => $csrfToken,
+        ]);
+    }
+
+}

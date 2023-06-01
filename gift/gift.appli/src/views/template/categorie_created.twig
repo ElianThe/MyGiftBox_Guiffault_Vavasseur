@@ -1,0 +1,10 @@
+{% extends "_layout/main.twig" %}
+
+{%  block content %}
+
+    <div class="categorie-created">
+        <h1>La catégorie {{ newCategorie }} a bien été créée</h1>
+        <a class="btn-primary" href="{{ url_for('categories') }}">Retour à la liste des catégories</a>
+    </div>
+
+{%  endblock %}
