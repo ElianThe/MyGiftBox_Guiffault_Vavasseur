@@ -3,7 +3,6 @@
 namespace gift\app\actions;
 
 use gift\app\services\prestations\PrestationsService;
-use gift\app\services\utils\CsrfService;
 use Slim\Views\Twig;
 
 class NewCategorieAction
@@ -20,7 +19,9 @@ class NewCategorieAction
         ];
 
         $prestationsService = new PrestationsService();
-        $newCategorie = $prestationsService->addCategorie($data);
+        $newCategorieId = $prestationsService->addCategorie($data);
+
+        $newCategorie = $prestationsService->getCategorieById($newCategorieId);
 
         $view = Twig::fromRequest($request);
         return $view->render($response, 'categorie_created.twig', [
