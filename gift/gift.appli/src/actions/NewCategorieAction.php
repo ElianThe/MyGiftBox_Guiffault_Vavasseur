@@ -3,6 +3,7 @@
 namespace gift\app\actions;
 
 use gift\app\services\prestations\PrestationsService;
+use gift\app\services\utils\CsrfService;
 use Slim\Views\Twig;
 
 class NewCategorieAction
@@ -10,8 +11,17 @@ class NewCategorieAction
     public function __invoke($request, $response, $args)
     {
 
-        $libelle = $request->getParsedBody()['categ_lib'];
-        $description = $request->getParsedBody()['categ_desc'];
+        //vérification présence token CSRF
+        $csrfToken = $request->getParsedBody()['csrfToken'] ?? null;
+        if (!isset($csrfToken) || !CsrfService::checkToken($csrfToken)) {
+            $view = Twig::fromRequest($request);
+            return $view->render($response, 'error.twig', [
+                'message' => 'Erreur CSRF',
+            ]);
+        }
+
+        $libelle = filter_var($request->getParsedBody()['categ_lib'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $description = filter_var($request->getParsedBody()['categ_desc'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         $data = [
             'libelle' => $libelle,

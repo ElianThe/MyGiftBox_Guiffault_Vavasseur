@@ -1,0 +1,14 @@
+{% extends "_layout/main.twig" %}
+
+{% block content %}
+
+    <div class="error-page">
+        <div class="tittle">
+            <h2> Erreur !</h2>
+            <h3> 404 </h3>
+            <p>La page que vous cherchez n'existe pas.</p>
+            <p>Cause : {{ message }}</p>
+        </div>
+    </div>
+
+{% endblock %}

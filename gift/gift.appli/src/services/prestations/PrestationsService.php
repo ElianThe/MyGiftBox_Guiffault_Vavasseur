@@ -74,6 +74,11 @@ class PrestationsService
     }
 
     public function addCategorie($data) : int {
+        if($data['libelle'] != filter_var($data['libelle'], FILTER_SANITIZE_FULL_SPECIAL_CHARS))
+            throw new \Exception('Libelle invalide');
+        if($data['description'] != filter_var($data['description'], FILTER_SANITIZE_FULL_SPECIAL_CHARS))
+            throw new \Exception('Description invalide');
+
         $categorie = new Categorie();
         $categorie->libelle = $data['libelle'];
         $categorie->description = $data['description'];
@@ -87,6 +92,15 @@ class PrestationsService
             $categorie->delete();
         } catch (ModelNotFoundException $exception) {
             throw new PrestationNotFoundException('Categorie non trouvée', 404);
+        }
+    }
+
+    public function addPrestaToBox(string $idPrestation, string $idBox) {
+        try {
+            $prestation = Prestation::where('id', $idPrestation)->firstOrFail();
+            $prestation->attach($idBox);
+        } catch (ModelNotFoundException $exception) {
+            throw new PrestationNotFoundException('Prestation non trouvée', 404);
         }
     }
 

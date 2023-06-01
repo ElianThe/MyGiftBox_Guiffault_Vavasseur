@@ -8,11 +8,12 @@
 
         <p> Ici vous pourrez retrouver : {{ categorie.description }}</p>
 
-        <a href="{{ basePath }}categories" class="btn-primary">Retour à la liste des catégories</a>
+        <a href="{{ url_for('categories') }}" class="btn-primary">Retour à la liste des catégories</a>
 
         <a href="{{ url_for('prestationsFromCategorie', {'categ_id' : categorie.id}) }}">Voir les prestations liées à la
             catégorie</a>
 
+        {# <a href="{{ url_for('deleteCategorie', {'categ_id' : categorie.id}) }}">Supprimer la catégorie</a> #}
     </div>
 
 {% endblock %}

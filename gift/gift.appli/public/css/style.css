@@ -20,7 +20,7 @@ body {
     text-decoration: none;
 }
 
-.btn-primary {
+.btn-primary:hover {
     cursor: pointer;
     transform: scale(1.05);
     transition: 0.5s;
@@ -271,4 +271,10 @@ body {
 
 .categorie h2 {
     text-transform: uppercase;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
