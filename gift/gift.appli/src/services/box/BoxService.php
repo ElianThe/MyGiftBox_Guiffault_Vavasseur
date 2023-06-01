@@ -2,6 +2,8 @@
 
 namespace gift\app\services\box;
 
+use gift\app\models\Prestation;
+use gift\app\services\prestations\PrestationNotFoundException;
 use Ramsey\Uuid\Uuid;
 use gift\app\models\Box;
 use gift\app\services\utils\CsrfService;
@@ -39,5 +41,14 @@ class BoxService
         $box->statut = Box::CREATED;
         $box->save();
         return $box->id;
+    }
+
+    public function addPrestaToBox(string $idPrestation, string $idBox) {
+        try {
+            $prestation = Prestation::where('id', $idPrestation)->firstOrFail();
+            $prestation->attach($idBox);
+        } catch (ModelNotFoundException $exception) {
+            throw new PrestationNotFoundException('Prestation non trouvée', 404);
+        }
     }
 }

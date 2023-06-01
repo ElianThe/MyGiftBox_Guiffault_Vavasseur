@@ -94,14 +94,4 @@ class PrestationsService
             throw new PrestationNotFoundException('Categorie non trouvée', 404);
         }
     }
-
-    public function addPrestaToBox(string $idPrestation, string $idBox) {
-        try {
-            $prestation = Prestation::where('id', $idPrestation)->firstOrFail();
-            $prestation->attach($idBox);
-        } catch (ModelNotFoundException $exception) {
-            throw new PrestationNotFoundException('Prestation non trouvée', 404);
-        }
-    }
-
 }

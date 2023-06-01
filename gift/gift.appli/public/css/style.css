@@ -308,6 +308,8 @@ form label {
 
 form input[type="text"],
 form input[type="email"],
+form input[type="password"],
+form input[type="number"],
 form textarea {
     width: 100%;
     padding: 10px;
@@ -317,7 +319,7 @@ form textarea {
 }
 
 form button[type="submit"] {
-    background-color: #98CFD5;
+    background-color: #79cfd7;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -327,5 +329,5 @@ form button[type="submit"] {
 }
 
 form button[type="submit"]:hover {
-    background-color: #79cfd7;
+    background-color: #45b0b7;
 }
