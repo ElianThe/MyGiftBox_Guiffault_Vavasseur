@@ -30,5 +30,4 @@ class CsrfService
             throw new Exception('CSRF token mismatch');
         }
     }
-
 }
