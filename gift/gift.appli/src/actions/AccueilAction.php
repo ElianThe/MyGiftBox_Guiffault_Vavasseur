@@ -1,12 +1,13 @@
 <?php
 
 namespace gift\app\actions;
-use Slim\Psr7\Request;
-use Slim\Psr7\Response;
+
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\Twig;
 
 class AccueilAction {
-    public function __invoke (Request $request, Response $response, $args) : Response {
+    public function __invoke (ServerRequestInterface $request, ResponseInterface $response, $args) : ResponseInterface {
         $basePath = '/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
 
 
