@@ -5,6 +5,7 @@ use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 
 $app = AppFactory::create();
+$app->addBodyParsingMiddleware();
 
 // Ajout du twig
 $twig = Twig::create( __DIR__ . '/../views/template',
