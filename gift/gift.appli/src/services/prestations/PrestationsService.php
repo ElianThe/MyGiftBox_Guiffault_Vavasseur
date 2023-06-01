@@ -75,9 +75,9 @@ class PrestationsService
 
     public function addCategorie($data) : int {
         if($data['libelle'] != filter_var($data['libelle'], FILTER_SANITIZE_FULL_SPECIAL_CHARS))
-            throw new \Exception('Libelle invalide');
+            throw new PrestationNotFoundException('Libelle invalide');
         if($data['description'] != filter_var($data['description'], FILTER_SANITIZE_FULL_SPECIAL_CHARS))
-            throw new \Exception('Description invalide');
+            throw new PrestationNotFoundException('Description invalide');
 
         $categorie = new Categorie();
         $categorie->libelle = $data['libelle'];

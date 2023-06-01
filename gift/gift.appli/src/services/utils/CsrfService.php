@@ -2,6 +2,8 @@
 
 namespace gift\app\services\utils;
 
+use Exception;
+
 class CsrfService
 {
 
@@ -28,5 +30,4 @@ class CsrfService
             throw new Exception('CSRF token mismatch');
         }
     }
-
 }
