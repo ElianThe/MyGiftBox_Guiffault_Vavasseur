@@ -2,16 +2,15 @@
 
 namespace gift\app\actions;
 
-use Slim\Psr7\Request;
-use Slim\Psr7\Response;
+use gift\app\services\utils\CsrfService;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\Twig;
 
 
 class FormBoxesAction
 {
-    public function __invoke (Request $request, Response $response, array $args) : Response {
-
-
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $args) {
         $view = Twig::fromRequest($request);
         return $view->render($response, 'box_form.twig');
     }
