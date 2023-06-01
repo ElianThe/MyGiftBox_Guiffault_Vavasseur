@@ -2,6 +2,8 @@
 
 namespace gift\app\services\utils;
 
+use Exception;
+
 class CsrfService
 {
 
