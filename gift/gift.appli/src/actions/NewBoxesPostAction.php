@@ -3,9 +3,9 @@
 namespace gift\app\actions;
 
 use gift\app\services\box\BoxService;
+use gift\app\services\prestations\PrestationsService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Slim\Routing\RouteContext;
 use Slim\Views\Twig;
 
 class NewBoxesPostAction
@@ -24,8 +24,13 @@ class NewBoxesPostAction
         $box = new BoxService();
         $newBox = $box->addBox($data);
 
-        $routeParser = RouteContext::fromRequest($request)->getRouteParser();
-        $url = $routeParser->urlFor('categories');
-        return $response->withHeader('Location', $url)->withStatus(302);
+        $prestationsService = new PrestationsService();
+        $prestations = $prestationsService->getPrestations();
+
+        $view = Twig::fromRequest($request);
+        return $view->render($response, 'box_created.twig', [
+            'newBox' => $newBox,
+            'prestations' => $prestations,
+        ]);
     }
 }

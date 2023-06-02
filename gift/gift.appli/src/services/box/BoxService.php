@@ -29,6 +29,16 @@ class BoxService
         return $box;
     }
 
+    public function getPrestationsById ($id) {
+        $prestation = '';
+        try {
+
+        }  catch (ModelNotFoundException $exception) {
+
+        }
+        return $prestation;
+    }
+
     public function addBox($data): int {
         $box = new Box();
         $box->id =  Uuid::uuid4()->toString();
