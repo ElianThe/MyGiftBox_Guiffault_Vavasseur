@@ -22,24 +22,37 @@ class BoxService
 
     public function getBoxById ($id) : array {
         try {
-            $box = Box::where('id', $id)->first()->toArray();
+            $box = Box::findOrFail($id)->toArray();
         } catch (ModelNotFoundException $exception) {
             throw new BoxesNotFoundException();
         }
         return $box;
     }
 
-    public function getPrestationsById ($id) {
-        $prestation = '';
+    public function getPrestations () {
         try {
-
+            $box = new Box();
+            $prestations = $box->prestations();
         }  catch (ModelNotFoundException $exception) {
-
+            throw new BoxesNotFoundException();
         }
-        return $prestation;
+        return $prestations;
     }
 
     public function addBox($data): int {
+        if ($data['libelle'] != filter_var($data['libelle'], FILTER_SANITIZE_SPECIAL_CHARS)){
+            throw new BoxServiceBadDataException('Bad data : libelle');
+        }
+        if ($data['description'] != filter_var($data['description'], FILTER_SANITIZE_SPECIAL_CHARS)){
+            throw new BoxServiceBadDataException('Bad data : description');
+        }
+        if ($data['kdo'] != filter_var($data['kdo'], FILTER_SANITIZE_NUMBER_INT)){
+            throw new BoxServiceBadDataException('Bad data : kdo');
+        }
+        if ($data['message_kdo'] != filter_var($data['message_kdo'], FILTER_SANITIZE_SPECIAL_CHARS)){
+            throw new BoxServiceBadDataException('Bad data : message_kdo');
+        }
+
         $box = new Box();
         $box->id =  Uuid::uuid4()->toString();
         $box->token = CsrfService::generateToken();
