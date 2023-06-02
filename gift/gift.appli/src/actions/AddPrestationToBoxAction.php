@@ -2,9 +2,7 @@
 
 namespace gift\app\actions;
 
-use gift\app\services\prestations\PrestationNotFoundException;
-use gift\app\services\prestations\PrestationsService;
-use Slim\Exception\HttpNotFoundException;
+use gift\app\services\box\BoxService;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Views\Twig;
@@ -23,8 +21,8 @@ class AddPrestationToBoxAction
             ]);
         }
 
-        $prestationService = new PrestationsService();
-        $prestationService->addPrestaToBox($prestation_id, $box_id);
+        $boxService = new BoxService();
+        $boxService->addPrestaToBox($prestation_id, $box_id);
 
 
 

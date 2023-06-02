@@ -94,4 +94,13 @@ class PrestationsService
             throw new PrestationNotFoundException('Categorie non trouvée', 404);
         }
     }
+
+    public function getPrestations() {
+        try {
+            $prestations = Prestation::all()->toArray();
+        } catch (ModelNotFoundException $exception) {
+            throw new PrestationNotFoundException('Prestation non trouvée', 404);
+        }
+        return $prestations;
+    }
 }

@@ -43,7 +43,8 @@ class BoxService
         return $box->id;
     }
 
-    public function addPrestaToBox(string $idPrestation, string $idBox) {
+    public function addPrestaToBox(string $idPrestation, string $idBox): void
+    {
         try {
             $prestation = Prestation::where('id', $idPrestation)->firstOrFail();
             $prestation->attach($idBox);
