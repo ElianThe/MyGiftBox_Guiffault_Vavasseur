@@ -2,22 +2,26 @@
 
 {% block content %}
 
-    <h2>contenu de la boxe </h2>
+    <div class="boxe">
+        <h3>contenu de la boxe </h3>
 
 
-    <div class="cards">
-    {% for prestation in prestations %}
-        <div class="card">
-            <div class="content-card">
-                <img src="./img/eliareg.JPG" alt="">
-                <p> {{ prestation.libelle }}</p>
-            </div>
-            <div class="add-cart">
-                <button>add</button>
-            </div>
+        <div class="cards">
+            {% for prestation in prestations %}
+                <div class="card">
+                    <div class="content-card">
+                        <img src="../img/{{ prestation.img }}" alt="">
+                        <p> {{ prestation.libelle }}</p>
+                    </div>
+                    <div class="add-cart">
+                        <button class="btn-secondary">add</button>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+
     </div>
-    <img src="/opt/lampp/htdocs/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/shared/img/eliareg.JPG" alt="">
+
+
 
 {% endblock %}

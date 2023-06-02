@@ -8,6 +8,10 @@ body {
     margin: 0 8rem 7rem 8rem;
 }
 
+.content .content-right {
+    margin-top: 2rem;
+}
+
 .btn-primary {
     background-color: #98CFD5;
     border-radius: 25px;
@@ -161,7 +165,7 @@ body {
 }
 
 .content-right img {
-    width: 80%;
+    width: 90%;
     height: auto;
 }
 
@@ -240,7 +244,7 @@ body {
     position: absolute;
     width: 12rem;
     height: 3px;
-    background-color: black;
+    background-color: #008080;
     left: calc(50% - 6rem);
     bottom: -2rem;
 }
@@ -331,3 +335,63 @@ form button[type="submit"] {
 form button[type="submit"]:hover {
     background-color: #45b0b7;
 }
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 20%;
+    padding: 1rem;
+    position: relative;
+
+}
+
+.content-card {
+    background: #F5F5F5;
+    border-radius: 25px;
+    margin: 2rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+.content-card img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.add-cart button{
+    position: absolute;
+    bottom: 0;
+    right : 3rem;
+    cursor: pointer;
+}
+
+.add-cart button:hover{
+    background: #30b666;
+    transition: 0.2s;
+}
+
+.boxe h2 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #98CFD5;
+    font-family: 'Stencil', sans-serif;
+    margin: 4rem 0;
+    position: relative;
+}
+
+.boxe h2::after {
+    content: '';
+    position: absolute;
+    width: 12rem;
+    height: 3px;
+    background-color: #008080;
+    left: calc(50% - 6rem);
+    bottom: -2rem;
+}
+
