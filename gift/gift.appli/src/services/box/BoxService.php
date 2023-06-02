@@ -4,10 +4,10 @@ namespace gift\app\services\box;
 
 use gift\app\models\Prestation;
 use gift\app\services\prestations\PrestationNotFoundException;
-use Ramsey\Uuid\Uuid;
 use gift\app\models\Box;
 use gift\app\services\utils\CsrfService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Ramsey\Uuid\Uuid;
 
 class BoxService
 {
