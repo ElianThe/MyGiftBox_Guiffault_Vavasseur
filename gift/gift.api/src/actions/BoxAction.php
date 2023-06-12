@@ -2,23 +2,27 @@
 
 namespace gift\app\actions;
 
-use gift\app\services\prestations\PrestationsService;
+use gift\app\services\box\BoxService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class MenuAction
+class BoxAction
 {
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response,$args) {
 
-        $prestationService = new PrestationsService();
-        $categories = $prestationService->getCategories();
+        $id = null ?? $args['id'];
+
+        $boxService = new BoxService();
+        $box = $boxService->getBoxById($id);
 
         $data = [ 'type' => 'resource',
-            'count' => count($categories),
-            'categories' => $categories ];
+            'box' => $box ];
+
         $response->getBody()->write(json_encode($data));
         return
             $response->withHeader('Content-Type','application/json')
                 ->withStatus(200);
     }
+
+
 }
