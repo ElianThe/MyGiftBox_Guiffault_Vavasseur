@@ -36,6 +36,7 @@ services:
       - ./gift.appli/public:/var/www/html
       - ./shared/img:/var/www/html/img
       - ./gift.appli/src:/var/www/src
+      - ./gift.appli/test:/var/www/test
     working_dir: /var/www/src
     networks:
       - gift-box.net

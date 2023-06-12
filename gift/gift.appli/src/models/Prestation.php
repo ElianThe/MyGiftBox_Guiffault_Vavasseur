@@ -13,6 +13,7 @@ class Prestation extends Model
     public $timestamps = false;
     public $incrementing = false;
     public $keyType = 'string';
+    public $fillable = ["id", "libelle", "description", "tarif", "unite"];
 
     public function categorie() : BelongsTo
     {
