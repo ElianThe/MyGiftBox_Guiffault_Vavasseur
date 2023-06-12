@@ -5,8 +5,6 @@ namespace gift\app\actions;
 use gift\app\services\prestations\PrestationsService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Slim\Psr7\Request;
-use Slim\Psr7\Response;
 
 class MenuAction
 {
