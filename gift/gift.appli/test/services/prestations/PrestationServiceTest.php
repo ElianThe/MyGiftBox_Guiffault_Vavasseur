@@ -22,7 +22,7 @@ final class PrestationServiceTest extends TestCase
         parent::setUpBeforeClass();
 
         $db = new DB();
-        $db->addConnection(parse_ini_file(__DIR__ . '/../../../src/conf/gift.db.test.ini'));
+        $db->addConnection(parse_ini_file(__DIR__ . '/../../../src/conf/gift.db.tests.ini'));
         $db->setAsGlobal();
         $db->bootEloquent();
         $faker = \Faker\Factory::create('fr_FR');
