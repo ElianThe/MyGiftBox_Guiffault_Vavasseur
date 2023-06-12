@@ -66,14 +66,14 @@ class BoxService
         return $box->id;
     }
 
-    public function addPrestaToBox(string $idPrestation, string $idBox): void
+    public function addPrestaToBox(string $idPrestation, string $idBox, int $quantity = 1): void
     {
         try {
             $prestation = Prestation::where('id', $idPrestation)->firstOrFail();
-            $prestation->attach($idBox);
-
             $box = Box::where('id', $idBox)->firstOrFail();
-            $box->montant += $prestation->tarif;
+            $box->montant += $prestation->tarif * $quantity;
+            $box->prestations()->attach($prestation->id, ['quantite' => $quantity]);
+
             $box->save();
 
         } catch (ModelNotFoundException $exception) {

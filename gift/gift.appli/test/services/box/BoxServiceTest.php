@@ -64,10 +64,13 @@ final class BoxServiceTest extends TestCase
     public static function tearDownAfterClass(): void
     {
         foreach (self::$boxs as $box) {
+            $box->detach();
             $box->delete();
+
         }
         foreach (self::$prestations as $prestation) {
             $prestation->delete();
+
         }
 
     }
@@ -119,9 +122,9 @@ final class BoxServiceTest extends TestCase
     public function testaddPrestaToBox() : void
     {
         $boxService = new BoxService();
-        $boxService->addPrestaToBox(self::$boxs[0]->id, self::$prestations[0]->id);
+        $boxService->addPrestaToBox(self::$prestations[0]->id, self::$boxs[0]->id, 2);
         $box = $boxService->getBoxById(self::$boxs[0]->id);
 
-        $this->assertEquals($box['montant'], self::$prestations[0]->tarif * 2);
+        $this->assertEquals(self::$prestations[0]->tarif * 2, $box['montant']);
     }
 }
