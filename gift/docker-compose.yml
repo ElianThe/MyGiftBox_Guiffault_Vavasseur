@@ -19,6 +19,9 @@ services:
         aliases:
             - sql.db
 
+
+
+
   adminer:
     image: adminer
     ports:
@@ -43,3 +46,16 @@ services:
     depends_on:
       - sql
 
+  api:
+    image: canals/php:latest
+    ports:
+      - "5380:80"
+    volumes:
+      - ./gift.api/public:/var/www/html
+      - ./gift.api/src:/var/www/src
+      - ./shared/img:/var/www/html/img
+    working_dir: /var/www/src
+    networks:
+      - gift-box.net
+    depends_on:
+      - sql
