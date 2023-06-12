@@ -71,6 +71,11 @@ class BoxService
         try {
             $prestation = Prestation::where('id', $idPrestation)->firstOrFail();
             $prestation->attach($idBox);
+
+            $box = Box::where('id', $idBox)->firstOrFail();
+            $box->montant += $prestation->tarif;
+            $box->save();
+
         } catch (ModelNotFoundException $exception) {
             throw new PrestationNotFoundException('Prestation non trouvée', 404);
         }

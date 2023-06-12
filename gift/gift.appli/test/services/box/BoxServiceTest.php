@@ -77,15 +77,16 @@ final class BoxServiceTest extends TestCase
         $boxService = new BoxService();
         $boxs = $boxService->getBoxes();
 
-        $this->assertEquals(count(self::$boxs), count($boxs));
-        $this->assertEquals(self::$boxs[0]->id, $boxs[0]->id);
-        $this->assertEquals(self::$boxs[0]->libelle, $boxs[0]->libelle);
-        $this->assertEquals(self::$boxs[0]->description, $boxs[0]->description);
-        $this->assertEquals(self::$boxs[1]->id, $boxs[1]->id);
-        $this->assertEquals(self::$boxs[1]->libelle, $boxs[1]->libelle);
-        $this->assertEquals(self::$boxs[1]->description, $boxs[1]->description);
+        $this->assertSameSize(self::$boxs, $boxs);
+        $this->assertEquals(self::$boxs[0]->id, $boxs[0]['id']);
+        $this->assertEquals(self::$boxs[0]->libelle, $boxs[0]['libelle']);
+        $this->assertEquals(self::$boxs[0]->description, $boxs[0]['description']);
+        $this->assertEquals(self::$boxs[1]->id, $boxs[1]['id']);
+        $this->assertEquals(self::$boxs[1]->libelle, $boxs[1]['libelle']);
+        $this->assertEquals(self::$boxs[1]->description, $boxs[1]['description']);
 
     }
+
 
     public function testaddBox(): void
     {
@@ -98,10 +99,29 @@ final class BoxServiceTest extends TestCase
         ];
         $boxID = $boxService->addBox($data);
         $box = $boxService->getBoxById($boxID);
+        self::$boxs[] = $box;
 
-        $this->assertEquals($box->montant, 0);
-        $this->assertEquals($box->status, Box::CREATED);
+        $this->assertEquals($box['montant'], 0);
+        $this->assertEquals($box['statut'], Box::CREATED);
 
     }
 
+
+    public function testgetBoxById() : void
+    {
+        $boxService = new BoxService();
+        $box = $boxService->getBoxById(self::$boxs[0]->id);
+
+        $this->assertEquals(self::$boxs[0]->id, $box['id']);
+        $this->assertEquals(self::$boxs[0]->libelle, $box['libelle']);
+    }
+
+    public function testaddPrestaToBox() : void
+    {
+        $boxService = new BoxService();
+        $boxService->addPrestaToBox(self::$boxs[0]->id, self::$prestations[0]->id);
+        $box = $boxService->getBoxById(self::$boxs[0]->id);
+
+        $this->assertEquals($box['montant'], self::$prestations[0]->tarif * 2);
+    }
 }

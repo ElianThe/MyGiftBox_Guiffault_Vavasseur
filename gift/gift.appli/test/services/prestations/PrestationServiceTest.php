@@ -79,7 +79,7 @@ final class PrestationServiceTest extends TestCase
         $prestationService = new PrestationsService();
         $categories = $prestationService->getCategories();
 
-        $this->assertEquals(count(self::$categories), count($categories));
+        $this->assertSameSize(self::$categories, $categories);
         $this->assertEquals(self::$categories[0]['id'], $categories[0]['id']);
         $this->assertEquals(self::$categories[0]['libelle'], $categories[0]['libelle']);
         $this->assertEquals(self::$categories[0]['description'], $categories[0]['description']);
