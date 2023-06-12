@@ -13,7 +13,7 @@
   "autoload": {
     "psr-4" : {
       "gift\\app\\" : "./",
-      "gift\\test\\" : "../test"
+      "gift\\test\\" : "./../test"
     }
   }
 }
