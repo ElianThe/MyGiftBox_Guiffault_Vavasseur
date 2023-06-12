@@ -10,6 +10,9 @@ class Box extends Model
     protected $primaryKey = 'id';
     public $timestamps = true;
 
+    public $incrementing = false;
+    public $keyType = 'string';
+
     const CREATED = 1;
     const NOT_CREATED = 0;
     const STATUT = [

@@ -3,9 +3,11 @@
 namespace gift\app\actions;
 
 use gift\app\services\box\BoxService;
+use gift\app\services\prestations\PrestationNotFoundException;
 use gift\app\services\prestations\PrestationsService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Views\Twig;
 
 class NewBoxesPostAction
@@ -21,15 +23,22 @@ class NewBoxesPostAction
         'message_kdo' => $params['message_kdo'],
         ];
 
-        $box = new BoxService();
-        $newBox = $box->addBox($data);
+        try {
+            $boxService = new BoxService();
+            $newBoxId = $boxService->addBox($data);
 
-        $prestationsService = new PrestationsService();
-        $prestations = $prestationsService->getPrestations();
+            $prestationsService = new PrestationsService();
+            $prestations = $prestationsService->getPrestations();
+
+        } catch (PrestationNotFoundException $exception) {
+            throw new HttpNotFoundException('Prestation ou box non trouvée');
+        }
+
+        $_SESSION['box'] = $boxService->getBoxById($newBoxId);
 
         $view = Twig::fromRequest($request);
         return $view->render($response, 'box_created.twig', [
-            'newBox' => $newBox,
+            'newBox' => $newBoxId,
             'prestations' => $prestations,
         ]);
     }

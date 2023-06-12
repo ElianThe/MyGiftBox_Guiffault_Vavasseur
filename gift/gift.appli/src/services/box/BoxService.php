@@ -20,11 +20,11 @@ class BoxService
         return $boxes;
     }
 
-    public function getBoxById ($id) : array {
+    public function getBoxById (string $id) : array {
         try {
-            $box = Box::findOrFail($id)->toArray();
+            $box = Box::where('id', $id)->firstOrFail()->toArray();
         } catch (ModelNotFoundException $exception) {
-            throw new BoxesNotFoundException();
+            throw new BoxesNotFoundException('Id not found');
         }
         return $box;
     }
@@ -39,7 +39,7 @@ class BoxService
         return $prestations;
     }
 
-    public function addBox($data): int {
+    public function addBox($data): string {
         if ($data['libelle'] != filter_var($data['libelle'], FILTER_SANITIZE_SPECIAL_CHARS)){
             throw new BoxServiceBadDataException('Bad data : libelle');
         }
