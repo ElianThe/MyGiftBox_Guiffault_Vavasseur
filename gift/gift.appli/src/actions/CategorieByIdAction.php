@@ -17,7 +17,6 @@ class CategorieByIdAction
         //gestion des erreurs
         $id = null ?? $args['id'];
 
-        $basePath = '/ArchitectureLogiciel/MyGiftBox_Guiffault_Vavasseur/gift/gift.appli/public/';
         $prestationsService = new PrestationsService();
 
         try {
