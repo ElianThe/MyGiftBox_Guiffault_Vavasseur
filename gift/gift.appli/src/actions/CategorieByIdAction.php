@@ -31,7 +31,6 @@ class CategorieByIdAction
         return $view->render($response, 'categorie.twig', [
             'categorie' => $categorie,
             'prestations' => $prestations,
-            'basePath' => $basePath
         ]);
     }
 

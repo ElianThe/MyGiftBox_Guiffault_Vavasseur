@@ -5,11 +5,15 @@
     "slim/psr7": "^1.6",
     "illuminate/database":"^9.0",
     "slim/twig-view": "^3.3",
-    "ramsey/uuid": "^4.0"
+    "ramsey/uuid": "^4.0",
+    "phpunit/phpunit": "3.7.*",
+    "fakerphp/faker": "^1.20"
   },
+
   "autoload": {
     "psr-4" : {
-      "gift\\app\\" : "./"
+      "gift\\app\\" : "./",
+      "gift\\test\\" : "../test"
     }
   }
 }

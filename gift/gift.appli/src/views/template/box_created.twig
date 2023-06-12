@@ -3,14 +3,14 @@
 {% block content %}
 
     <div class="boxe">
-        <h3>contenu de la boxe </h3>
+        <h2>contenu de la boxe </h2>
 
 
         <div class="cards">
             {% for prestation in prestations %}
                 <div class="card">
                     <div class="content-card">
-                        <img src="../img/{{ prestation.img }}" alt="">
+                        <img src="/img/{{ prestation.img }}" alt="">
                         <p> {{ prestation.libelle }}</p>
                     </div>
                     <div class="add-cart">
