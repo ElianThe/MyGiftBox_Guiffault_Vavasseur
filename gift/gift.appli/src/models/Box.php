@@ -13,6 +13,8 @@ class Box extends Model
     public $incrementing = false;
     public $keyType = 'string';
 
+    public $fillable = ['id', 'token', 'libelle', 'description', 'kdo', 'message_kdo', 'statut'];
+
     const CREATED = 1;
     const NOT_CREATED = 0;
     const STATUT = [

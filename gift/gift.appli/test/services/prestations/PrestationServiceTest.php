@@ -22,7 +22,7 @@ final class PrestationServiceTest extends TestCase
         parent::setUpBeforeClass();
 
         $db = new DB();
-        $db->addConnection(parse_ini_file(__DIR__ . '/../../../src/conf/gift.db.test.ini'));
+        $db->addConnection(parse_ini_file(__DIR__ . '/../../../src/conf/gift.db.tests.ini'));
         $db->setAsGlobal();
         $db->bootEloquent();
         $faker = \Faker\Factory::create('fr_FR');
@@ -79,7 +79,7 @@ final class PrestationServiceTest extends TestCase
         $prestationService = new PrestationsService();
         $categories = $prestationService->getCategories();
 
-        $this->assertEquals(count(self::$categories), count($categories));
+        $this->assertSameSize(self::$categories, $categories);
         $this->assertEquals(self::$categories[0]['id'], $categories[0]['id']);
         $this->assertEquals(self::$categories[0]['libelle'], $categories[0]['libelle']);
         $this->assertEquals(self::$categories[0]['description'], $categories[0]['description']);
