@@ -2,17 +2,24 @@
 
 namespace gift\app\actions;
 
+use gift\app\services\prestations\PrestationsService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Psr7\Request;
+use Slim\Psr7\Response;
 
 class MenuAction
 {
-    public function __invoke(ServerRequestInterface $response, ResponseInterface $request, $args) {
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response,$args) {
 
-        $html = <<<HTML
-                <h1>Accueil</h1>
-HTML;
-        $response->getBody()->write($html);
-        return $response;
+        $prestationService = new PrestationsService();
+        $categorie = $prestationService->getCategories();
+
+        $data = [ 'type' => 'resource',
+            'categorie' => $categorie ];
+        $response->getBody()->write(json_encode($data));
+        return
+            $response->withHeader('Content-Type','application/json')
+                ->withStatus(200);
     }
 }
