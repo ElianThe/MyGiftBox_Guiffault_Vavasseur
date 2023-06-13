@@ -13,13 +13,16 @@ use Slim\Views\Twig;
 class PrestationAction
 {
 
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args) {
-        $id = $request->getQueryParams()['id'] ?? null;
-        $prestationsService = new PrestationsService();
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    {
+        var_dump($args);
+        $id = $args['presta_id'];
+
         try {
+            $prestationsService = new PrestationsService();
             $prestation = $prestationsService->getPrestationById($id);
         } catch (PrestationNotFoundException $exception) {
-            throw new HttpNotFoundException( $request, 'Prestation non trouvée');
+            throw new HttpNotFoundException($request, 'Prestation non trouvée');
         }
 
         $view = Twig::fromRequest($request);

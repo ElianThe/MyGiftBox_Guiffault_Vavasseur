@@ -31,7 +31,7 @@ class BoxService
 
     public function getPrestations () {
         try {
-            $box = new Box();
+            $box = Box::where('id', $_SESSION['box_id'])->firstOrFail();
             $prestations = $box->prestations();
         }  catch (ModelNotFoundException $exception) {
             throw new BoxesNotFoundException();

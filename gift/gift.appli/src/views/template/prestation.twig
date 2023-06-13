@@ -2,16 +2,18 @@
 
 {% block content %}
 
-    <div class="card">
-        <div class="content-card">
-            <img src="/img/{{ prestation.img }}" alt="">
-            <p> {{ prestation.libelle }}</p>
-            <p>Description : {{ prestation.description }}</p>
-            <p>Contenu : {{ prestation.unite }}</p>
-            <p>Tarif : {{ prestation.tarif }} €</p>
+    <div class="card-details">
+        <div class="product-image">
+            <img src="/img/{{ prestation.img }}" alt="Image du produit">
+        </div>
+        <div class="product-details">
+            <h2>{{ prestation.libelle }}</h2>
+            <p class="description">{{ prestation.description }}</p>
+            <p><strong>Contenu :</strong> {{ prestation.unite }}</p>
+            <p><strong>Tarif :</strong> {{ prestation.tarif }} €</p>
+            <button class="add-to-cart">Ajouter au panier</button>
         </div>
     </div>
-        
 
 
 {% endblock %}

@@ -2,6 +2,8 @@
 declare(strict_types=1);
 
 use gift\app\actions\AddPrestationToBoxAction;
+use gift\app\actions\BoxDetailsAction;
+use gift\app\actions\BoxesAction;
 use gift\app\actions\CategorieByIdAction;
 use gift\app\actions\ConnexionAction;
 use gift\app\actions\ConnexionPostAction;
@@ -34,7 +36,7 @@ return function (Slim\App $app) {
     $app->get('/categorie/{id:\d+}[/]', CategorieByIdAction::class)->setName('categorie');
 
     // Route 3 : Affichage d'une prestation si l'ID est présent en paramètre
-    $app->get('/prestation', PrestationAction::class)->setName('prestation');
+    $app->get('/prestation/{presta_id:\d+}', PrestationAction::class)->setName('prestation');
 
     // Route 3 : Affichage des prestations d'une catégorie
     $app->get('/categorie/{categ_id:\d+}/prestations', PrestationsFromCategorie::class)->setName('prestationsFromCategorie');
@@ -85,5 +87,14 @@ return function (Slim\App $app) {
 
     //Route 15 : Modification du mot de passe d'un utilisateur
     $app->get('/profil/password', ResetPasswordAction::class)->setName('password');
+
+    //Route 16 : Affichage de la box qui est en session avec les prestations liées
+    $app->get('/box', BoxCreatedAction::class)->setName('boxCreated');
+
+    //Route 17 : Affichage de la liste de toutes les boxes
+    $app->get('/boxes', BoxesAction::class)->setName('boxes');
+
+    //Route 18 : Affichage du détail d'une box
+    $app->get('/boxes/{id:\d+}', BoxDetailsAction::class)->setName('boxDetails');
 
 };
