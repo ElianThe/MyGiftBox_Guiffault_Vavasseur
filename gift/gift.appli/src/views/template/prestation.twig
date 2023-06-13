@@ -2,14 +2,16 @@
 
 {% block content %}
 
-    <h1>Prestation : {{ prestation.libelle }} </h1>
-    <ul>
-        <li>ID : {{ prestation.id }}</li>
-        <li>Libellé : {{ prestation.libelle }}</li>
-        <li>Description : {{ prestation.description }}</li>
-        <li>Contenu : {{ prestation.unite }}</li>
-        <li>Tarif : {{ prestation.tarif }}</li>
-    </ul>
+    <div class="card">
+        <div class="content-card">
+            <img src="/img/{{ prestation.img }}" alt="">
+            <p> {{ prestation.libelle }}</p>
+            <p>Description : {{ prestation.description }}</p>
+            <p>Contenu : {{ prestation.unite }}</p>
+            <p>Tarif : {{ prestation.tarif }} €</p>
+        </div>
+    </div>
+        
 
 
 {% endblock %}

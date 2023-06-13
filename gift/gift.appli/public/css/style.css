@@ -367,16 +367,17 @@ form button[type="submit"]:hover {
     object-fit: contain;
 }
 
-.add-cart button{
+.add-cart .btn-secondary{
     position: absolute;
     bottom: 0;
     right : 3rem;
     cursor: pointer;
+    border-radius: 25px;
+    background-color: #30b666;
 }
 
-.add-cart button:hover{
-    background: #30b666;
-    transition: 0.2s;
+.add-cart .btn-secondary:hover{
+    transition: 2s;
 }
 
 .boxe h2 {
@@ -405,6 +406,68 @@ form button[type="submit"]:hover {
 
 }
 
+.sous-titre, .categorie-description {
+    text-align: center;
+}
+
+.sous-titre {
+    padding-top : 100px ;
+}
+
+.go-back-button {
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    border: solid black 10px;
+    border-radius: 25px;
+}
+
+.go-back-button-div:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.prestations-categorie-page h1 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #98CFD5;
+    font-family: 'Stencil', sans-serif;
+    margin: 4rem 0;
+}
+
+.prestations-categorie {
+    margin: 4rem 16rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.prestation-categorie {
+    width: 100%;
+    text-align: center;
+    border-radius: 25px;
+    padding: 1rem;
+    background-color: #F5F5F5;
+    margin: 2rem;
+}
+
+.prestations-categorie > div {
+    flex: 30%;
+}
+
+.prestation-categorie a {
+    text-decoration: none;
+    color: black;
+}
+
+.hidden-form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
 .container {
     max-width: 800px;
     margin: 0 auto;
