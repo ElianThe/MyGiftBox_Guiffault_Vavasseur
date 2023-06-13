@@ -21,7 +21,7 @@ class CategorieByIdAction
 
         try {
             $categorie = $prestationsService->getCategorieById($id);
-            $prestations = $prestationsService->getPrestationsbyCategorie($args['id']);
+            $prestations = $prestationsService->getPrestationsbyCategorie($id);
         } catch (PrestationNotFoundException $exception) {
             throw new HttpNotFoundException($request, 'Catégorie non trouvée');
         }

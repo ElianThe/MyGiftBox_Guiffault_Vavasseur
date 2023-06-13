@@ -13,9 +13,14 @@
                         <img src="/img/{{ prestation.img }}" alt="">
                         <p> {{ prestation.libelle }}</p>
                     </div>
+
+
                     <div class="add-cart">
-                        <button class="btn-secondary">add</button>
+                        <form action="{{ url_for('addPrestationToBox', {}, { 'presta_id': prestation.id}) }}" method="post" class="hidden-form">
+                            <button class="btn-secondary" type="submit">add</button>
+                        </form>
                     </div>
+
                 </div>
             {% endfor %}
         </div>

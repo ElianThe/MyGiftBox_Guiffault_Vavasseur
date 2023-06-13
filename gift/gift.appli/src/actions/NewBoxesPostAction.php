@@ -26,6 +26,7 @@ class NewBoxesPostAction
         try {
             $boxService = new BoxService();
             $newBoxId = $boxService->addBox($data);
+            $_SESSION['box_id'] = $newBoxId;
 
             $prestationsService = new PrestationsService();
             $prestations = $prestationsService->getPrestations();

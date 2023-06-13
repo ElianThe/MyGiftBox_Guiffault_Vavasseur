@@ -3,16 +3,19 @@
 namespace gift\app\actions;
 
 use gift\app\services\box\BoxService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
+use Slim\Routing\RouteContext;
 use Slim\Views\Twig;
 
 class AddPrestationToBoxAction
 {
     public function __invoke(Request $request, Response  $response, array $args) {
 
-        $prestation_id = $request->getParsedBody()['prestation_id'] ?? null;
-        $box_id = $request->getParsedBody()['box_id'] ?? null;
+        $prestation_id = $request->getQueryParams()['presta_id'] ?? null;
+        $box_id = $_SESSION['box_id'];
 
         if (!isset($prestation_id) || !isset($box_id)) {
             $view = Twig::fromRequest($request);
@@ -21,13 +24,15 @@ class AddPrestationToBoxAction
             ]);
         }
 
-        $boxService = new BoxService();
-        $boxService->addPrestaToBox($prestation_id, $box_id);
+        try {
+            $boxService = new BoxService();
+            $boxService->addPrestaToBox($prestation_id, $box_id);
+        } catch (ModelNotFoundException $exception) {
+            throw new HttpNotFoundException($request, 'Pas possible d ajouter une prestation à la boxe');
+        }
 
-
-
-        $view = Twig::fromRequest($request);
-        return $view->render($response, 'prestations_from_categorie.twig', [
-        ]);
+        $routeParser = RouteContext::fromRequest($request)->getRouteParser();
+        $url = $routeParser->fullUrlFor($request->getUri(), 'newBox');
+        return $response->withHeader('Location', $url)->withStatus(302);
     }
 }
