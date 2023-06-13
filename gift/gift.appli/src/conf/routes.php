@@ -16,6 +16,7 @@ use gift\app\actions\PrestationAction;
 use gift\app\actions\CategoriesAction;
 use gift\app\actions\AccueilAction;
 use gift\app\actions\FormBoxesAction;
+use gift\app\actions\PrestationsAction;
 use gift\app\actions\PrestationsFromCategorie;
 use gift\app\actions\ProfilAction;
 use gift\app\actions\ProfilPostAction;
@@ -49,6 +50,8 @@ return function (Slim\App $app) {
 
     //Route y :
     $app->post('/boxes/new', NewBoxesPostAction::class)->setName('newBox');
+
+    $app->get('/prestations', PrestationsAction::class)->setName('prestations');
     
     //Route 7 : Suppression d'une catégorie
     $app->delete('/categories/{id:\d+}/delete', DeleteCategorieAction::class)->setName('deleteCategorie');

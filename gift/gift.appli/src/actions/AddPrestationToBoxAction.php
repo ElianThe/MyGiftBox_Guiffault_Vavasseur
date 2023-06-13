@@ -32,7 +32,7 @@ class AddPrestationToBoxAction
         }
 
         $routeParser = RouteContext::fromRequest($request)->getRouteParser();
-        $url = $routeParser->fullUrlFor($request->getUri(), 'newBox');
+        $url = $routeParser->fullUrlFor($request->getUri(), 'prestations');
         return $response->withHeader('Location', $url)->withStatus(302);
     }
 }
