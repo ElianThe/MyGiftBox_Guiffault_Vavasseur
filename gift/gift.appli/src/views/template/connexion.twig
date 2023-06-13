@@ -1,0 +1,20 @@
+{% extends "_layout/main.twig" %}
+
+{% block content %}
+
+
+    <form method="post" action="{{ url_for('connexionPost') }}" >
+        <h2>Connexion</h2>
+
+        <label for="email">email</label>
+        <input type="text" id="email" name="email"><br>
+
+        <label for="pass">Mot de passe</label>
+        <input type="password" id="pass" name="pass"><br>
+
+        <button type="submit">Se connecter</button>
+
+        <a href="{{ url_for('inscription') }}">Créer mon compte</a>
+    </form>
+
+{% endblock %}
