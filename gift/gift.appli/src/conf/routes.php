@@ -3,8 +3,13 @@ declare(strict_types=1);
 
 use gift\app\actions\AddPrestationToBoxAction;
 use gift\app\actions\CategorieByIdAction;
+use gift\app\actions\ConnexionAction;
+use gift\app\actions\ConnexionPostAction;
+use gift\app\actions\DeconnexionAction;
 use gift\app\actions\DeleteCategorieAction;
 use gift\app\actions\FormCategorieAction;
+use gift\app\actions\InscriptionAction;
+use gift\app\actions\InscriptionPostAction;
 use gift\app\actions\NewBoxesPostAction;
 use gift\app\actions\NewCategorieAction;
 use gift\app\actions\PrestationAction;
@@ -12,6 +17,10 @@ use gift\app\actions\CategoriesAction;
 use gift\app\actions\AccueilAction;
 use gift\app\actions\FormBoxesAction;
 use gift\app\actions\PrestationsFromCategorie;
+use gift\app\actions\ProfilAction;
+use gift\app\actions\ProfilPostAction;
+use gift\app\actions\ResetPasswordAction;
+use gift\app\actions\ResetPasswordPostAction;
 
 return function (Slim\App $app) {
     //accueil
@@ -48,22 +57,30 @@ return function (Slim\App $app) {
     $app->post('/boxes/prestation/add', AddPrestationToBoxAction::class)->setName('addPrestationToBox');
 
     //Route 9 : Inscription d'un utilisateur
-    $app->get('/inscription', \gift\app\actions\InscriptionAction::class)->setName('inscription');
+    $app->get('/inscription', InscriptionAction::class)->setName('inscription');
 
     //Route 9bis
-    $app->post('/inscription', \gift\app\actions\InscriptionPostAction::class)->setName('inscriptionPost');
+    $app->post('/inscription', InscriptionPostAction::class)->setName('inscriptionPost');
 
     //Route 10 : Connexion d'un utilisateur
-    $app->get('/connexion', \gift\app\actions\ConnexionAction::class)->setName('connexion');
+    $app->get('/connexion', ConnexionAction::class)->setName('connexion');
 
     //Route 10bis
-    $app->post('/connexion', \gift\app\actions\ConnexionPostAction::class)->setName('connexionPost');
+    $app->post('/connexion', ConnexionPostAction::class)->setName('connexionPost');
 
     //Route 11 : Déconnexion d'un utilisateur
-    $app->get('/deconnexion', \gift\app\actions\DeconnexionAction::class)->setName('deconnexion');
+    $app->get('/deconnexion', DeconnexionAction::class)->setName('deconnexion');
 
     //Route 12 : Affichage du profil d'un utilisateur
-    $app->get('/profil', \gift\app\actions\ProfilAction::class)->setName('profil');
+    $app->get('/profil', ProfilAction::class)->setName('profil');
 
+    //Route 13 : Affichage du formulaire de modification d'un utilisateur
+    $app->post('/profil', ProfilPostAction::class)->setName('profilPost');
+
+    //Route 14 : Modification du mot de passe d'un utilisateur
+    $app->post('/profil/password', ResetPasswordPostAction::class)->setName('passwordPost');
+
+    //Route 15 : Modification du mot de passe d'un utilisateur
+    $app->get('/profil/password', ResetPasswordAction::class)->setName('password');
 
 };

@@ -112,6 +112,11 @@ body {
     text-align: center;
 }
 
+.login img {
+    width: 35px;
+    height: 35px;
+}
+
 .login:hover {
     cursor: pointer;
     transform: scale(1.05);
@@ -436,4 +441,58 @@ form button[type="submit"]:hover {
 
 .container .btn:hover {
     background-color: #EAF4F4;
+}
+
+.alert {
+    padding: 20px;
+    background-color: #DC143C;
+    color: white;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.succes {
+    background-color: #4CAF50;
+    padding: 20px;
+    color: white;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.reset-password {
+    display: flex;
+}
+
+.deconnexion {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 2rem 1rem 2rem;
+}
+
+.deconnexion a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FF5A5A;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.deconnexion a:hover {
+    background-color: #E62929;
+}
+
+
+.reset-password a {
+    color: #79cfd7;
+    text-decoration: none;
+    margin: 0.5rem;
+}
+
+.reset-password a:hover {
+    color: #4a9ea9;
 }

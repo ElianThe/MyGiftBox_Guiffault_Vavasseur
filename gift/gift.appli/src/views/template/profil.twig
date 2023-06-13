@@ -1,0 +1,41 @@
+{% extends "_layout/main.twig" %}
+
+
+{% block content %}
+
+    <form action="{{ url_for('profil') }}" method="post">
+        <h2>Mon compte</h2>
+
+        {% if error is defined %}
+            <div class="alert">
+                {{ error }}
+            </div>
+        {% elseif success is defined %}
+            <div class="succes">
+                {{ success }}
+            </div>
+        {% endif %}
+
+        <div>
+            <label for="nom">Nom</label>
+            <input type="text" name="nom" id="nom" value="{{ user['nom'] }}">
+        </div>
+        <div>
+            <label for="prenom">Prénom</label>
+            <input type="text" name="prenom" id="prenom" value="{{ user['prenom'] }}">
+        </div>
+        <div>
+            <label for="email">email</label>
+            <input type="text" name="email" id="email" value="{{ user['email'] }}">
+        </div>
+        <div class="reset-password">
+            <button type="submit">Modifier</button>
+            <a href="{{ url_for('password') }}">Changer de mot de passe</a>
+        </div>
+        <div class="deconnexion">
+            <a href="{{ url_for('deconnexion') }}">Déconnexion</a>
+        </div>
+    </form>
+
+
+{% endblock %}

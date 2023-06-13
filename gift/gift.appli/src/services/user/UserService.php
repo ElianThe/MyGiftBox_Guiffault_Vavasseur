@@ -50,7 +50,7 @@ class UserService
         }
     }
 
-    public function getUserFromSession()
+    public static function getUserFromSession()
     {
         if (isset($_SESSION['user'])) {
             return $_SESSION['user'];
@@ -66,7 +66,8 @@ class UserService
     public function updateUser(array $attributs)
     {
         try {
-            $user = User::findOrFail($attributs['id']);
+            $user = self::getUserFromSession();
+            $user = unserialize(serialize($user));
             $user->nom = $attributs['nom'];
             $user->prenom = $attributs['prenom'];
             $user->email = $attributs['email'];
@@ -79,8 +80,12 @@ class UserService
     public function updatePassword(array $attributs)
     {
         try {
-            $user = User::findOrFail($attributs['id']);
-            $user->password = password_hash($attributs['pass'], PASSWORD_DEFAULT);
+            $user = self::getUserFromSession();
+            $user = unserialize(serialize($user));
+            if ($attributs['password'] !== $attributs['confirm_password']) {
+                throw new UserNotFoundException('Mot de passe incorrect', 404);
+            }
+            $user->password = password_hash($attributs['password'], PASSWORD_DEFAULT);
             $user->save();
         } catch (ModelNotFoundException $exception) {
             throw new UserNotFoundException('Utilisateur non trouvé', 404);

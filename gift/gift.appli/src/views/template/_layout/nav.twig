@@ -19,7 +19,9 @@
         </div>
         <div class="login">
             {% if session.user is defined %}
-                <a href="{{ url_for('profil') }}">Deconnexion</a>
+                <a href="{{ url_for('profil') }}">
+                    <img src="{{ base_path() }}/img/icons/utilisateur.png">
+                </a>
             {% else %}
                 <a href="{{ url_for('connexion') }}">Se connecter</a>
             {% endif %}
