@@ -395,3 +395,8 @@ form button[type="submit"]:hover {
     bottom: -2rem;
 }
 
+.text-muted {
+    color: #6c757d!important;
+
+}
+

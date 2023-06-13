@@ -13,6 +13,7 @@
                     <a href="{{ url_for('categorie', { 'id': categorie.id}) }}">
                         <h2>{{ categorie.libelle }}</h2>
                         <p>{{ categorie.description }}</p>
+                        <p class="text-muted">> plus de détails </p>
                     </a>
                 </div>
             {% endfor %}
