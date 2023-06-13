@@ -49,5 +49,17 @@ CREATE TABLE `prestation` (
   `cat_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` varchar(128) NOT NULL,
+  `nom` varchar(128) NOT NULL,
+  `prenom` varchar(128) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `password` varchar(128) NOT NULL,
+  `role` varchar(128) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 -- 2023-04-07 14:49:49
