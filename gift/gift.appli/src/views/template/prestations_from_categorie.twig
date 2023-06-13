@@ -3,10 +3,12 @@
 
 {% block content %}
 
-<ul>
+<div class="prestations-categorie">
     {% for prestation in prestations %}
-        <li> <a href="{{ url_for('prestation', {}, {'id' : prestation.id}) }}">{{ prestation.libelle }}</a> </li>
+    <div class="prestation-categorie">
+        <a  href="{{ url_for('prestation', {}, {'id' : prestation.id}) }}"><h1>{{ prestation.libelle }}</h1></a>
+    </div>
     {% endfor %}
-</ul>
+</div>
 
 {% endblock %}

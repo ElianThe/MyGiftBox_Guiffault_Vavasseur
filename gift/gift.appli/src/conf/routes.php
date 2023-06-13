@@ -45,7 +45,7 @@ return function (Slim\App $app) {
     $app->delete('/categories/{id:\d+}/delete', DeleteCategorieAction::class)->setName('deleteCategorie');
 
     //Route 8 : Liéer une prestation à une boxe
-    $app->post('/boxes/prestation/add', AddPrestationToBoxAction::class)->setName('addPrestationToBox');
+    $app->post('/addPrestaToBox/boxes_id/prest_id', AddPrestationToBoxAction::class)->setName('addPrestationToBox');
 
     //Route 9 : Inscription d'un utilisateur
     $app->get('/inscription', \gift\app\actions\InscriptionAction::class)->setName('inscription');
