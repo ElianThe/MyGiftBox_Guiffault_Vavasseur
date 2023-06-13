@@ -47,5 +47,23 @@ return function (Slim\App $app) {
     //Route 8 : Liéer une prestation à une boxe
     $app->post('/boxes/prestation/add', AddPrestationToBoxAction::class)->setName('addPrestationToBox');
 
+    //Route 9 : Inscription d'un utilisateur
+    $app->get('/inscription', \gift\app\actions\InscriptionAction::class)->setName('inscription');
+
+    //Route 9bis
+    $app->post('/inscription', \gift\app\actions\InscriptionPostAction::class)->setName('inscriptionPost');
+
+    //Route 10 : Connexion d'un utilisateur
+    $app->get('/connexion', \gift\app\actions\ConnexionAction::class)->setName('connexion');
+
+    //Route 10bis
+    $app->post('/connexion', \gift\app\actions\ConnexionPostAction::class)->setName('connexionPost');
+
+    //Route 11 : Déconnexion d'un utilisateur
+    $app->get('/deconnexion', \gift\app\actions\DeconnexionAction::class)->setName('deconnexion');
+
+    //Route 12 : Affichage du profil d'un utilisateur
+    $app->get('/profil', \gift\app\actions\ProfilAction::class)->setName('profil');
+
 
 };

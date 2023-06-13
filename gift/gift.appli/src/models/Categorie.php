@@ -15,4 +15,6 @@ class Categorie extends Model
         return $this->hasMany(Prestation::class, 'cat_id', 'id');
     }
 
+
+
 }

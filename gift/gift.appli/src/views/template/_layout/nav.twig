@@ -18,7 +18,11 @@
             <img src="{{ base_path() }}/img/icons/caddy.svg">
         </div>
         <div class="login">
-            Se connecter
+            {% if session.user is defined %}
+                <a href="{{ url_for('profil') }}">Deconnexion</a>
+            {% else %}
+                <a href="{{ url_for('connexion') }}">Se connecter</a>
+            {% endif %}
         </div>
     </div>
 </div>

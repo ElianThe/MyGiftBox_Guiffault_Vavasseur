@@ -51,14 +51,13 @@ CREATE TABLE `prestation` (
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` varchar(128) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(128) NOT NULL,
   `prenom` varchar(128) NOT NULL,
   `email` varchar(128) NOT NULL,
   `password` varchar(128) NOT NULL,
-  `role` varchar(128) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
-  `updated_at` datetime NOT NULL
+    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
