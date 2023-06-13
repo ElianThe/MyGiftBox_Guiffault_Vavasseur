@@ -3,27 +3,13 @@
 {% block content %}
 
     <div class="boxe">
-        <h2>contenu de la boxe </h2>
+        <h2>Vous venez de créer une nouvelle boxe</h2>
 
+        <p>Vous pouvez dès à présent la consulter dans la liste des boxes</p>
+        {#<a href="{{ url_for('boxes') }}" class="btn btn-primary">Voir les boxes</a>  #}
 
-        <div class="cards">
-            {% for prestation in prestations %}
-                <div class="card">
-                    <div class="content-card">
-                        <img src="/img/{{ prestation.img }}" alt="">
-                        <p> {{ prestation.libelle }}</p>
-                    </div>
-
-
-                    <div class="add-cart">
-                        <form action="{{ url_for('addPrestationToBox', {}, { 'presta_id': prestation.id}) }}" method="post" class="hidden-form">
-                            <button class="btn-secondary" type="submit">add</button>
-                        </form>
-                    </div>
-
-                </div>
-            {% endfor %}
-        </div>
+        <p>Vous pouvez également la compléter en lui ajoutant des préstations</p>
+        <a href="{{ url_for('prestations') }}" class="btn btn-primary">Ajouter des prestations</a>
 
     </div>
 

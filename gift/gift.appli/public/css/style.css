@@ -123,6 +123,11 @@ body {
     transition: 0.5s;
 }
 
+.login a {
+    text-decoration: none;
+    color: black;
+}
+
 .cart {
     padding: 0.7rem;
     border-radius: 20px;

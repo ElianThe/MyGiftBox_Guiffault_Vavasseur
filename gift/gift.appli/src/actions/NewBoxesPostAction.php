@@ -26,21 +26,15 @@ class NewBoxesPostAction
         try {
             $boxService = new BoxService();
             $newBoxId = $boxService->addBox($data);
-            $_SESSION['box_id'] = $newBoxId;
-
-            $prestationsService = new PrestationsService();
-            $prestations = $prestationsService->getPrestations();
 
         } catch (PrestationNotFoundException $exception) {
-            throw new HttpNotFoundException('Prestation ou box non trouvée');
+            throw new HttpNotFoundException('Box non trouvée');
         }
 
-        $_SESSION['box'] = $boxService->getBoxById($newBoxId);
+        $_SESSION['box_id'] = $newBoxId;
 
         $view = Twig::fromRequest($request);
         return $view->render($response, 'box_created.twig', [
-            'newBox' => $newBoxId,
-            'prestations' => $prestations,
         ]);
     }
 }
