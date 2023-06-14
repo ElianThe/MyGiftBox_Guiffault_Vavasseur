@@ -1,5 +1,15 @@
 Réalisé par Elian et Régis 
 
+# Projet Coffret Cadeau
+## Installation
+modifier le fichier gift.db.conf.ini.dist en gift.db.conf.ini et modifier les paramètres de connexion à la base de données.
+Pour les test, créer un fichier gift.db.test.ini et modifier les paramètres de connexion à la base de données.
+
+### Lancer le serveur
+- composer install dans src
+- docker compose up -d dans gift
+- 
+
 ## Description des tâches détaillées
 
 - [x] Afficher la liste des préstations
