@@ -11,9 +11,11 @@ class BoxDetailsAction {
     public function __invoke (ServerRequestInterface $request, ResponseInterface $response, $args) : ResponseInterface {
 
         $boxService = new BoxService();
-        $box = $boxService->getBoxById($_SESSION['box_id']);
+        //$box = $boxService->getBoxById($_SESSION['box_id']);
 
-        $prestations = $boxService->getPrestations();
+        $box = $args['id'];
+
+        $prestations = $boxService->getPrestations($box);
 
 
         $view = Twig::fromRequest($request);

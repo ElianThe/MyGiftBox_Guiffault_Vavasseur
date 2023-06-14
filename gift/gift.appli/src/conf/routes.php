@@ -95,6 +95,6 @@ return function (Slim\App $app) {
     $app->get('/boxes', BoxesAction::class)->setName('boxes');
 
     //Route 18 : Affichage du détail d'une box
-    $app->get('/boxes/{id:\d+}', BoxDetailsAction::class)->setName('boxDetails');
+    $app->get('/boxes/{id}', BoxDetailsAction::class)->setName('boxDetails');
 
 };

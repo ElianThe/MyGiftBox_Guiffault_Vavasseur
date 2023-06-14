@@ -8,7 +8,7 @@
         </div>
         <div>
             {% for box in boxes %}
-                {#<a href="{{ url_for('boxDetails', { 'id': box.id }) }}">  #}
+                <a href="{{ url_for('boxDetails', { 'id': box.id }) }}">
                     <div class="box">
                         <div class="box_content">
                             <h3>{{ box.libelle }}</h3>
@@ -16,7 +16,7 @@
                             {# <a href="{{ url_for('addCart', { 'id': box.id }) }}">Ajouter au panier</a>#}
                         </div>
                     </div>
-                {# </a> #}
+                </a>
             {% endfor %}
         </div>
     </div>

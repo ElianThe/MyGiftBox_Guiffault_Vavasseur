@@ -29,9 +29,9 @@ class BoxService
         return $box;
     }
 
-    public function getPrestations () {
+    public function getPrestations ($id_box) {
         try {
-            $box = Box::where('id', $_SESSION['box_id'])->firstOrFail();
+            $box = Box::where('id', $id_box)->firstOrFail();
             $prestations = $box->prestations();
         }  catch (ModelNotFoundException $exception) {
             throw new BoxesNotFoundException();
