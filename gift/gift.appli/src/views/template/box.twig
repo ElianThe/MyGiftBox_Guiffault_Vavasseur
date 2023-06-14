@@ -3,31 +3,36 @@
 {% block content %}
 
     <div class="mes-boxes">
-        <div class="top-content">
-            <h2>{{ box.libelle }}</h2>
-            <a href="{{ url_for('prestations') }}">Ajouter des préstations</a>
-        </div>
+        {% if box is not defined %}
+            <p>Veuillez Créer une boxe</p>
+            <a href="{{ url_for('newBox') }}">Créer un coffret</a>
+        {% else %}
+            <div class="top-content">
+                <h2>{{ box.libelle }}</h2>
+                <a href="{{ url_for('prestations') }}">Ajouter des préstations</a>
+            </div>
 
-        <div class="prestations">
-            {%  if prestations is empty %}
-                <p>Aucune prestation pour le moment</p>
-            {% endif %}
-            {% for prestation in prestations %}
-                <div class="prestation">
-                    <div class="prestation-img">
-                        <img src="/img/{{ prestation.img }}" alt="">
-                    </div>
-                    <div class="prestation-text">
-                        <h3>{{ prestation.libelle }}</h3>
-                        <p>{{ prestation.description }}</p>
-                        <p>{{ prestation.tarif }}€/u</p>
-                        <a href="{{ url_for('prestation', {}, {'id': prestation.id}) }}" target="_blank">Voir
-                            plus</a>
-                    </div>
+            <div class="prestations">
+                {% if prestations is empty %}
+                    <p>Aucune prestation pour le moment</p>
+                {% endif %}
+                {% for prestation in prestations %}
+                    <div class="prestation">
+                        <div class="prestation-img">
+                            <img src="/img/{{ prestation.img }}" alt="">
+                        </div>
+                        <div class="prestation-text">
+                            <h3>{{ prestation.libelle }}</h3>
+                            <p>{{ prestation.description }}</p>
+                            <p>{{ prestation.tarif }}€/u</p>
+                            <a href="{{ url_for('prestation', {}, {'id': prestation.id}) }}" target="_blank">Voir
+                                plus</a>
+                        </div>
 
-                </div>
-            {% endfor %}
-        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
 
 
