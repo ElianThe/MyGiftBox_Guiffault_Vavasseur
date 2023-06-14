@@ -36,7 +36,7 @@ return function (Slim\App $app) {
     $app->get('/categorie/{id:\d+}[/]', CategorieByIdAction::class)->setName('categorie');
 
     // Route 3 : Affichage d'une prestation si l'ID est présent en paramètre
-    $app->get('/prestation/{presta_id:\d+}', PrestationAction::class)->setName('prestation');
+    $app->get('/prestation', PrestationAction::class)->setName('prestation');
 
     // Route 3 : Affichage des prestations d'une catégorie
     $app->get('/categorie/{categ_id:\d+}/prestations', PrestationsFromCategorie::class)->setName('prestationsFromCategorie');

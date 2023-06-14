@@ -9,7 +9,8 @@
         <div class="cards">
             {% for prestation in prestations %}
                 <div class="card">
-                    <a href="{{ url_for('prestation', {'presta_id': prestation.id}) }}">
+
+                    <a href="{{ url_for('prestation', {}, {'id': prestation.id}) }}">
                         <div class="content-card">
                             <img src="/img/{{ prestation.img }}" alt="">
                             <p> {{ prestation.libelle }}</p>
