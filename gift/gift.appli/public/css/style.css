@@ -651,3 +651,83 @@ p {
     cursor: pointer;
 }
 
+/* Style for the mes-boxes container */
+.mes-boxes {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+/* Style for the top content */
+.top-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Style for the box title */
+.top-content h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+/* Style for the "Ajouter des préstations" button */
+.top-content a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #98CFD5;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px;
+}
+
+/* Style for the prestations section */
+.prestations {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+}
+
+/* Style for each prestation */
+.prestation {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+}
+
+/* Style for prestation image */
+.prestation-img img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Style for prestation title */
+.prestation-text h3 {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+/* Style for prestation description */
+.prestation-text p {
+    margin-bottom: 5px;
+}
+
+/* Style for prestation price */
+.prestation-text p:last-child {
+    font-weight: bold;
+}
+
+/* Style for "Voir plus" link */
+.prestation-text a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #98CFD5;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px;
+}
+
+

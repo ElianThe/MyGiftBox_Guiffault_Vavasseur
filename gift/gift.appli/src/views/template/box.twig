@@ -9,6 +9,9 @@
         </div>
 
         <div class="prestations">
+            {%  if prestations is empty %}
+                <p>Aucune prestation pour le moment</p>
+            {% endif %}
             {% for prestation in prestations %}
                 <div class="prestation">
                     <div class="prestation-img">
@@ -17,8 +20,8 @@
                     <div class="prestation-text">
                         <h3>{{ prestation.libelle }}</h3>
                         <p>{{ prestation.description }}</p>
-                        <p>{{ prestation.tarif }}</p>
-                        <a href="{{ url_for('prestation', {'presta_id': prestation.id}) }}" target="_blank">Voir
+                        <p>{{ prestation.tarif }}€/u</p>
+                        <a href="{{ url_for('prestation', {}, {'id': prestation.id}) }}" target="_blank">Voir
                             plus</a>
                     </div>
 
