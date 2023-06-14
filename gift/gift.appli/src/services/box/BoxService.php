@@ -32,7 +32,7 @@ class BoxService
     public function getPrestations ($id_box) {
         try {
             $box = Box::where('id', $id_box)->firstOrFail();
-            $prestations = $box->prestations();
+            $prestations = $box->prestations()->get();
         }  catch (ModelNotFoundException $exception) {
             throw new BoxesNotFoundException();
         }
@@ -80,4 +80,32 @@ class BoxService
             throw new PrestationNotFoundException('Prestation non trouvée', 404);
         }
     }
+
+    public function prestaAlreadyInBox(string $idPrestation, string $idBox): bool
+    {
+        try {
+            $prestation = Prestation::where('id', $idPrestation)->firstOrFail();
+            $box = Box::where('id', $idBox)->firstOrFail();
+            $prestaInBox = $box->prestations()->where('presta_id', $prestation->id)->firstOrFail();
+            return true;
+        } catch (ModelNotFoundException $exception) {
+            return false;
+        }
+    }
+
+    public function updatePrestaQuantity(string $idPrestation, string $idBox): void
+    {
+        try {
+            $prestation = Prestation::where('id', $idPrestation)->firstOrFail();
+            $box = Box::where('id', $idBox)->firstOrFail();
+            $prestaInBox = $box->prestations()->where('presta_id', $prestation->id)->firstOrFail();
+            $prestaInBox->pivot->quantite += 1;
+            $prestaInBox->pivot->save();
+            $box->montant += $prestation->tarif;
+            $box->save();
+        } catch (ModelNotFoundException $exception) {
+            throw new PrestationNotFoundException('Prestation non trouvée', 404);
+        }
+    }
+
 }

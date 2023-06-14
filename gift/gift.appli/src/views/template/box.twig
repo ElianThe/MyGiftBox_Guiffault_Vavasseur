@@ -2,7 +2,30 @@
 
 {% block content %}
 
-    <p>azeae</p>
+    <div class="mes-boxes">
+        <div class="top-content">
+            <h2>{{ box.libelle }}</h2>
+            <a href="{{ url_for('prestations') }}">Ajouter des préstations</a>
+        </div>
+
+        <div class="prestations">
+            {% for prestation in prestations %}
+                <div class="prestation">
+                    <div class="prestation-img">
+                        <img src="/img/{{ prestation.img }}" alt="">
+                    </div>
+                    <div class="prestation-text">
+                        <h3>{{ prestation.libelle }}</h3>
+                        <p>{{ prestation.description }}</p>
+                        <p>{{ prestation.tarif }}</p>
+                        <a href="{{ url_for('prestation', {'presta_id': prestation.id}) }}" target="_blank">Voir
+                            plus</a>
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 
 

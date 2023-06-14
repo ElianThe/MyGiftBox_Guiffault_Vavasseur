@@ -26,7 +26,11 @@ class AddPrestationToBoxAction
 
         try {
             $boxService = new BoxService();
-            $boxService->addPrestaToBox($prestation_id, $box_id);
+            if ($boxService->prestaAlreadyInBox($prestation_id, $box_id)) {
+                $boxService->updatePrestaQuantity($prestation_id, $box_id);
+            } else {
+                $boxService->addPrestaToBox($prestation_id, $box_id);
+            }
         } catch (ModelNotFoundException $exception) {
             throw new HttpNotFoundException($request, 'Pas possible d ajouter une prestation à la boxe');
         }

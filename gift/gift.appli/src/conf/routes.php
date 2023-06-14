@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 use gift\app\actions\AddPrestationToBoxAction;
+use gift\app\actions\BoxCreatedAction;
 use gift\app\actions\BoxDetailsAction;
 use gift\app\actions\BoxesAction;
 use gift\app\actions\CategorieByIdAction;

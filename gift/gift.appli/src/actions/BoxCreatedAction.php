@@ -13,7 +13,8 @@ class BoxCreatedAction {
         $boxService = new BoxService();
         $box = $boxService->getBoxById($_SESSION['box_id']);
 
-        $prestations = $boxService->getPrestations();
+        $prestations = $boxService->getPrestations($_SESSION['box_id']);
+
 
 
         $view = Twig::fromRequest($request);
