@@ -15,8 +15,7 @@ class PrestationAction
 
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        var_dump($args);
-        $id = $args['presta_id'];
+        $id = $request->getQueryParams()['id'];
 
         try {
             $prestationsService = new PrestationsService();
